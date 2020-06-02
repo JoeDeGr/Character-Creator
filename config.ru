@@ -7,5 +7,5 @@ end
 use Rack::MethodOverride
 
 use LocationController
-use CharicterController
+use CharacterController
 run ApplicationController
