@@ -4,9 +4,10 @@ class ApplicationController<Sinatra::Base
         set :public_folder, 'public'
         set :views, 'app/views' 
         set :session_secret, 'password_security'
+        set :layout => :layout
     end
 
     get '/' do
-        'Hello World'
+        erb :index
     end
 end
