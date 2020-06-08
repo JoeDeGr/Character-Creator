@@ -1,3 +1,3 @@
 class Powers < ActiveRecord::Base
-    has_many :types, through :type_powers
+    has_many :archatypes, through :type_powers
 end
