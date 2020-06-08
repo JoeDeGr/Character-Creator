@@ -1,4 +1,4 @@
 class TypePowers < ActiveRecord::Base
-    belongs_to :type
+    belongs_to :archatype
     belongs_to :powers
 end
