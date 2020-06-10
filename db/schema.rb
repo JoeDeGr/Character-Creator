@@ -10,6 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_06_10_173114) do
+
+  create_table "archatypes", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+  end
+
+  create_table "character_types", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "archatype_id"
+  end
+
+  create_table "characters", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.integer "level"
+    t.integer "user_id"
+  end
+
+  create_table "powers", force: :cascade do |t|
+    t.text "name"
+    t.text "effect"
+  end
+
+  create_table "type_powers", force: :cascade do |t|
+    t.integer "archatype_id"
+    t.integer "power_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.text "name"
+    t.text "email"
+    t.text "password_digest"
+  end
 
 end

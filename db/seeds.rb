@@ -7,9 +7,9 @@ a = Archatype.create(name: "wizard", description: "Old wise greybeard")
 
 pow = Power.create(name: "Fireball", effect: "burn")
 
-a.powers = pow
+a.power_ids = pow.id
 
-c.archatype = a
+c.archatype_ids = a.id
 
 c.user = u
 
