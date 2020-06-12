@@ -10,11 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_173114) do
+ActiveRecord::Schema.define(version: 2020_06_11_221102) do
 
   create_table "archatypes", force: :cascade do |t|
     t.text "name"
     t.text "description"
+  end
+
+  create_table "buildings", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.text "special_properties"
+    t.integer "location_id"
+  end
+
+  create_table "character_buildings", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "building_id"
+  end
+
+  create_table "character_locations", force: :cascade do |t|
+    t.integer "character_id"
+    t.integer "location_id"
   end
 
   create_table "character_types", force: :cascade do |t|
@@ -27,6 +44,13 @@ ActiveRecord::Schema.define(version: 2020_06_10_173114) do
     t.text "description"
     t.integer "level"
     t.integer "user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.text "weather"
+    t.text "housing"
   end
 
   create_table "powers", force: :cascade do |t|
