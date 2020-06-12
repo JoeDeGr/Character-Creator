@@ -1,0 +1,10 @@
+<h1>Check out all the cool stuff you have!</h1>
+
+<h2>Welcome, <%=@user.name%>!<h2>
+
+    <h3> Characters by, <%=@user_page.name%>!</h3>
+        <ul>
+            <%@characters.each do |character|%>
+            <li><a href="/characters/<%=character.slug%>"><%=character.name%></a></li>
+            <%end%>
+        </ul>

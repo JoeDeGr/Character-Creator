@@ -1,13 +1,15 @@
 module Helpers 
     module ClassMethods
         def current_user(session)
-            @user = User.find(session[:user_id])
+            binding.pry
+
+            @user = User.find_by_id(session)
         end
 
         def is_logged_in?(session)
             !!session[:user_id]
         end
-        def find_by_slug
+        def find_by_slug(slug)
             self.all.find{|a| a.slug == slug}
         end
     end
