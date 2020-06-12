@@ -5,9 +5,9 @@ class UserController < ApplicationController
     get "/login" do
         if User.is_logged_in?(session)
             @user = User.find_by_id(session[:user_id])
-            redirect "/user/#{@user.slug}"
+            redirect "/users/#{@user.slug}"
         else
-            erb :"/user/login"
+            erb :"/users/login"
         end
     end
 
@@ -16,38 +16,38 @@ class UserController < ApplicationController
             @user = User.find_by_id(session[:user_id]) 
             redirect "/user/#{@user.slug}"
         else
-            erb :"/user/signup"
+            erb :"/users/signup"
         end
     end
 
-    get "/user/:slug" do
+    get "/users/:slug" do
         if User.is_logged_in?(session)
-            @user = User.find_by_id(session[:user_id]) 
+            @user = User.current_user(session)
             @user_page = User.find_by_slug(params[:slug])
             @characters = @user_page.characters
-            erb :"/user/show"
+            erb :"/users/show"
         else
-            erb :"/user/login"
+            redirect "/login"
         end 
     end
 
-    get "/user/:slug/edit" do
+    get "/users/:slug/edit" do
         if User.is_logged_in?(session)
             @user = User.find_by_id(session[:user_id])
             @user_page = User.find_by_slug(params[:slug])
             if @user.id == @user_page.id
                 @characters = @user_page.characters
-                erb :"/user/edit"
+                erb :"/users/edit"
             end
         else
             session.clear
-            erb :"/user/login"
+            redirect "/users/login"
         end 
     end
 
     get "/logout" do
         session.clear
-        redirect "/login"
+        redirect "/index"
     end
 
     post "/login" do
@@ -55,7 +55,7 @@ class UserController < ApplicationController
 
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect "/user/#{@user.slug}"
+            redirect "/users/#{@user.slug}"
         else
             redirect "/login"
         end
@@ -72,22 +72,22 @@ class UserController < ApplicationController
         else
             @user = User.create(params)
             session[:user_id] = @user.id
-            redirect "/user/#{@user.slug}"
+            redirect "/users/#{@user.slug}"
         end
     end
 
     patch "/signup/:slug" do
         
         if params[:name] == ""
-            redirect "/user/:slug/edit"
+            redirect "/users/:slug/edit"
         elsif params[:email] == ""
-            redirect "/user/:slug/edit"
+            redirect "/users/:slug/edit"
         elsif params[:password] == ""
-            redirect "/user/:slug/edit"
+            redirect "/users/:slug/edit"
         else
             @user = User.update(params)
             session[:user_id] = @user.id
-            redirect "/user/#{@user.slug}"
+            redirect "/users/#{@user.slug}"
         end
     end  
 end

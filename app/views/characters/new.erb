@@ -1,0 +1,62 @@
+<h1> I hear footsteps... who approaches?</h1>
+
+<form action="/characters" method="post">
+<label>Please select a unique name:</label>
+<input type="text" name="character[name]" id="character[name]"><br><br>
+
+<label>Where do they call home?</label>
+    <%@locations.each do |location|%>
+        <input type="checkbox" name="character[location_ids][]" id="<%=location.id%>" value="<%=location.id%>"><%=location.name%><br>
+        <p>Do you have a home there?</p>
+            <%location.buildings.each do |building|%>
+            <input type="checkbox" name="character[building_ids][]" id="<%=building.id%>" value="<%=building.id%>"><%=building.name%><br>
+            <%end%>
+    <%end%>
+
+<h2>Or... Have we not heard of it before?</h2>
+<h3>Tell us about from where you hail:</h3><br>
+    <label>What is the name of your home?</label>
+    <input type="text" name="location[name]" id="location[name]"><br><br>
+    <label>What is it like there, from the name it sounds exotic.</label><br>
+    <input type="text" name="location[description]" id="location[description]"><br><br>
+    <label>Interesting, what is the weather like?</label><br>
+    <input type="text" name="location[weather]" id="location[weather]"><br><br>
+    <label>hmmm... very interesting. With weather like that, what are the houses like?</label><br>
+    <input type="text" name="location[housing]" id="location[housing]"><br><br>
+
+<h2>Do you have a home there?</h2>
+<h3>What is your home like?</h3><br>
+    <label>What is your homes name?</label><br>
+    <input type="text" name="building[name]" id="building[name]"><br><br>
+    <label>What is it like</label><br>
+    <input type="text" name="building[description]" id="building[description]"><br><br>
+    <label>Do you draw from its power?</label><br>
+    <input type="text" name="building[special_properties]" id="building[special_properties]"><br><br>
+
+<p>What is it that you do?</p>
+     <%@archatypes.each do |archatype|%>
+        <input type="checkbox" name="character[archatype_ids][]" id="<%=archatype.id%>" value="<%=archatype.id%>"><%=archatype.name%>
+    <%end%>
+<h2>Have you another skill? We are always looking for something unique.</h2>
+
+<h3>Please tell us about your unique type. </h3><br>
+    <label>Does your type have a name?</label>
+    <input type="text" name="archatype[name]" id="archatype[name]"><br><br>
+
+    <label>What is it that you do?</label><br>
+    <input type="text" name="archatype[description]" id="archatype[description]"><br><br>
+
+    <label>Does your type have any special powers?</label><br>
+        <%@archatypes.each do |archatype|%>
+            <%archatype.powers.each do |power|%>
+            <input type="checkbox" name="archatype[power_ids][]" id="<%=power.id%>" value="<%=power.id%>"><%=power.name%><br>
+            <%end%>
+    <%end%>
+    <p>Interesting, anything else?</p><br>
+    <input type="text" name="power[name]" id="power[name]" value="Name"><br>
+    <p>WOW... What does that do?</p><br>
+    <input type="text" name="power[effect]" id="power[effect]" value="Effect"><br>
+
+<input type="submit" value="submit">
+</form>
+
