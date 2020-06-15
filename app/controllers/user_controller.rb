@@ -3,6 +3,7 @@ require 'pry'
 class UserController < ApplicationController
 
     get "/login" do
+
         if User.is_logged_in?(session)
             @user = User.find_by_id(session[:user_id])
             redirect "/users/#{@user.slug}"
@@ -47,12 +48,11 @@ class UserController < ApplicationController
 
     get "/logout" do
         session.clear
-        redirect "/index"
+        redirect "/"
     end
 
     post "/login" do
         @user = User.find_by(name: params[:name])
-
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect "/users/#{@user.slug}"

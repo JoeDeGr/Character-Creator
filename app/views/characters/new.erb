@@ -4,10 +4,13 @@
 <label>Please select a unique name:</label>
 <input type="text" name="character[name]" id="character[name]"><br><br>
 
-<label>Where do they call home?</label>
+<label>Where do you call from?</label>
     <%@locations.each do |location|%>
         <input type="checkbox" name="character[location_ids][]" id="<%=location.id%>" value="<%=location.id%>"><%=location.name%><br>
+    <%end%>
+     
         <p>Do you have a home there?</p>
+        <%@locations.each do |location|%>
             <%location.buildings.each do |building|%>
             <input type="checkbox" name="character[building_ids][]" id="<%=building.id%>" value="<%=building.id%>"><%=building.name%><br>
             <%end%>
@@ -56,6 +59,10 @@
     <input type="text" name="power[name]" id="power[name]" value="Name"><br>
     <p>WOW... What does that do?</p><br>
     <input type="text" name="power[effect]" id="power[effect]" value="Effect"><br>
+
+    <p> Well met! Tell me your story.</p>
+    <input type="text" name="character[description]" value="what is your background story">
+    <input type="hidden" name="character[level]" value="1">
 
 <input type="submit" value="submit">
 </form>

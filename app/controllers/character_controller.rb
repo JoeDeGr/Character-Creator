@@ -1,3 +1,4 @@
+
 class CharacterController < ApplicationController
     get "/characters/new" do
         if User.is_logged_in?(session)
@@ -7,21 +8,22 @@ class CharacterController < ApplicationController
             @archatypes = Archatype.all
             erb :"/characters/new"
         else
-            redirect "/users/#{@user.slug}"
+            redirect "/login"
         end 
     end
 
-    get "/characters/:slug" do
+    get "/characters/:id" do
+        
         if User.is_logged_in?(session)
             @user = User.current_user(session)
-            @character = Character.find_by_slug(params[:slug])
-            erb :"/users/show"
+            @character = Character.find_by_id(params[:id])
+            erb :"/characters/show"
         else
             redirect "/login"
         end 
     end
 
-    get "/characters/:slug/edit" do
+    get "/characters/:id/edit" do
         if User.is_logged_in?(session)
             @user = User.find_by_id(session[:user_id])
             @user_page = User.find_by_slug(params[:slug])
@@ -36,17 +38,20 @@ class CharacterController < ApplicationController
     end
 
     post "/characters" do
+
         @user = User.current_user(session)
         @character = Character.create(params[:character])
-        @location = Location.create(params[:location])
-        @building = Building.create(params[:building])
-        @archatype = Archatype.create(params[:archatype])
-        @power = Power.create(params[:power])
-        @location.buildings << @building
-        @archatype.powers <<  @power
-        @character.archatypes << @archatype
-        @character.locations << @location
-        redirect "/character/#{@character.name.slug}"
+        location = Location.create(params[:location])
+        building = Building.create(params[:building])
+        archatype = Archatype.create(params[:archatype])
+        power = Power.create(params[:power])
+        location.buildings << building
+        archatype.powers <<  power
+        @character.buildings << building
+        @character.archatypes << archatype
+        @character.locations << location
+        @character.save
 
+        redirect "/characters/#{@character.id}"
     end
 end

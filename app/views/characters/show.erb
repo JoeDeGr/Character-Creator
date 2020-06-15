@@ -1,1 +1,46 @@
-<h1>SHOW ME THE FUNNY!</h1>
+<h1>Check out all the cool stuff you have!</h1>
+
+<h2>Welcome, <%=@user.name%>!<h2>
+
+    <h3><%=@character.name%>!</h3>
+        <ul>
+            <h4>Backstory:</h4>
+                <ul>
+                    <li><%=@character.description%></li>
+                </ul>
+            <h4>Level:</h4>
+                <ul>
+                    <li><%=@character.level%></li>
+                </ul>
+            <h4>Locations:</h4>
+            <ul>
+                <%@character.locations.each do |l|%>
+                    <li><%=l.name%></li>
+                    <li><%=l.description%></li>
+                <%end%>
+            </ul>
+            <h4>Buildings:</h4>
+            <ul>
+                <%@character.buildings.each do |l|%>
+                    <li><%=l.name%></li>
+                    <li><%=l.description%></li>
+                    <li><%=l.special_properties%></li>
+                <%end%>
+            </ul>
+            <h4>Archatypes:</h4>
+            <ul>
+                <%@character.archatypes.each do |l|%>
+                    <li><%=l.name%></li>
+                    <li><%=l.description%></li>
+                <%end%>
+            </ul>
+            <h4>Powers:</h4>
+            <ul>
+                <%@character.powers.each do |l|%>
+                    <li><%=l.name%></li>
+                    <li><%=l.effect%></li>
+                <%end%>
+            </ul>
+        </ul>
+        <h3>Would you like to <a href="/characters/new">create a new character.</a><br>
+        <h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
