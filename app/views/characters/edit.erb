@@ -1,0 +1,19 @@
+<h1> I hear footsteps... who approaches?</h1>
+
+<form action="/characters/<%=@character.id%>" method="post">
+<input type="hidden" id="hidden" name="_method" value="patch">
+<label>What would you like to be called?:</label>
+<input type="text" name="character[name]" id="character[name]" value="@character.name"><br><br>
+
+<p> Would you like to Tell me your story again?.</p>
+    <input type="text" name="character[description]" value="<%=@character.description%>">
+<p>Or have you leveled up?</p>
+    <input type="text" name="character[level]" value="<%=@character.level%>">
+<input type="submit" value="submit">
+</form>
+
+<h3>Would you like to tellme about a new <a href="/locations/new">location</a> or <a href="/buildings/new">building?</a>
+<h3>Have you begun down the path of a new <a href="/archetypes/new">archetype</a> or <a href="/powers/new">power?</a>
+
+<h3>Would you like to <a href="/characters/new">create a new character.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>

@@ -1,4 +1,6 @@
 
+require 'pry'
+
 class CharacterController < ApplicationController
     get "/characters/new" do
         if User.is_logged_in?(session)
@@ -25,15 +27,15 @@ class CharacterController < ApplicationController
 
     get "/characters/:id/edit" do
         if User.is_logged_in?(session)
-            @user = User.find_by_id(session[:user_id])
-            @user_page = User.find_by_slug(params[:slug])
-            if @user.id == @user_page.id
-                @characters = @user_page.characters
-                erb :"/users/edit"
-            end
-        else
-            session.clear
-            erb :"/users/login"
+        #     @user = User.find_by_id(session[:user_id])
+        #     @character = Character.find_by_id(params[:id])
+        #     @user_page = User.find_by_id(@character.user_id)
+        #     if @user.id == @user_page.id
+                erb :"/characters/edit"
+        #     end
+        # else
+        #     session.clear
+        #     erb :"/users/login"
         end 
     end
 
@@ -50,6 +52,7 @@ class CharacterController < ApplicationController
         @character.buildings << building
         @character.archatypes << archatype
         @character.locations << location
+        @character.user_id = @user.id
         @character.save
 
         redirect "/characters/#{@character.id}"
