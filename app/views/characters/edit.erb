@@ -3,7 +3,7 @@
 <form action="/characters/<%=@character.id%>" method="post">
 <input type="hidden" id="hidden" name="_method" value="patch">
 <label>What would you like to be called?</label>
-<input type="text" name="character[name]" id="character[name]" value="@character.name"><br><br>
+<input type="text" name="character[name]" id="character[name]" value="<%=@character.name%>"><br><br>
 
 <p> Would you like to Tell me your story again?.</p>
     <input type="text" name="character[description]" value="<%=@character.description%>">

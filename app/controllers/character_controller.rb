@@ -15,13 +15,14 @@ class CharacterController < ApplicationController
     end
 
     get "/characters/:id/edit" do
+    
         if User.is_logged_in?(session)
-            binding.pry
+
             @user = User.find_by_id(session[:user_id])
             @character = Character.find_by_id(params[:id])
             @user_page = User.find_by_id(@character.user_id)
             if @user.id == @user_page.id
-                erb :"/characters/new"
+                erb :"/characters/edit"
             end
         else
             session.clear

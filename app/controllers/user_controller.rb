@@ -21,6 +21,7 @@ class UserController < ApplicationController
     end
 
     get "/users/:slug" do
+        
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @user_page = User.find_by_slug(params[:slug])
