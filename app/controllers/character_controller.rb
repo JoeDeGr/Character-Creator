@@ -2,7 +2,9 @@
 require 'pry'
 
 class CharacterController < ApplicationController
+
     get "/characters" do
+
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @characters = Character.all

@@ -3,23 +3,30 @@
 <ul>
     <%@characters.each do |character|%>
     <li><%=character.name%></li>
-    </ul>
-        <p><%=character.name.capitalize%>'s Locations:</p>
+    <ul>
+        <li><%=character.name%> tells this tale of their origin...</li>
+            <ul>
+                <li><%=character.description%></li>
+            </ul>
+        <li><%=character.name%> hails from:</li>
         <%character.locations.each do |location|%>
+        <ul>
             <li><%=location.name%></li>
                 <ul>
                     <li><%=location.description%></li>
                 </ul>
-        <p>This Locations Buildings</p>
-            <ul>
-                <%location.buildings.each do |building|%>
-                <li><%=building.name%></li>
+            <li>This Locations Buildings</li>
                 <ul>
-                    <li><%=building.description%></li>
-                    <li><%=building.special_properties%></li>
+                    <%location.buildings.each do |building|%>
+                    <li><%=building.name%></li>
+                    <ul>
+                        <li><p>Description: <%=building.description%></li>
+                        <li><%=building.special_properties%></li>
+                    </ul>
+                    <%end%>
                 </ul>
-                <%end%>
-            </ul>
-        <%end%>
+        </ul>
+        <%end%></li>
     </ul>
+    <%end%>
 </ul>
