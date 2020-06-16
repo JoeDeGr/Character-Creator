@@ -1,0 +1,22 @@
+<h1>All the locations we know of</h1>
+
+        <%@locations.each do |location|%>
+        <ul>
+            <li><%=location.name%></li>
+                <ul>
+                    <li><%=location.description%></li>
+                </ul>
+            <ul>
+                <li>Buildings located here:</li>
+                <ul>
+                    <%location.buildings.each do |building|%>
+                    <li><%=building.name%></li>
+                    <ul>
+                        <li><%=building.description%></li>
+                        <li><%=building.special_properties%></li>
+                    </ul>
+                    <%end%>
+                </ul>
+            </ul>
+        </ul>
+        <%end%></li>
