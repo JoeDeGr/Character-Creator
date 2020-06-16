@@ -1,0 +1,25 @@
+<h1>All of our friends</h1>
+
+<ul>
+    <%@characters.each do |character|%>
+    <li><%=character.name%></li>
+    </ul>
+        <p><%=character.name.capitalize%>'s Locations:</p>
+        <%character.locations.each do |location|%>
+            <li><%=location.name%></li>
+                <ul>
+                    <li><%=location.description%></li>
+                </ul>
+        <p>This Locations Buildings</p>
+            <ul>
+                <%location.buildings.each do |building|%>
+                <li><%=building.name%></li>
+                <ul>
+                    <li><%=building.description%></li>
+                    <li><%=building.special_properties%></li>
+                </ul>
+                <%end%>
+            </ul>
+        <%end%>
+    </ul>
+</ul>

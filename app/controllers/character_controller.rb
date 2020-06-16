@@ -2,6 +2,16 @@
 require 'pry'
 
 class CharacterController < ApplicationController
+    get "/characters" do
+        if User.is_logged_in?(session)
+            @user = User.current_user(session)
+            @characters = Character.all
+            erb :"/characters/index"
+        else
+            redirect "/login"
+        end 
+    end
+
     get "/characters/new" do
         if User.is_logged_in?(session)
             @user = User.current_user(session)
