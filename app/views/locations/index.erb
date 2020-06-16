@@ -1,22 +1,24 @@
 <h1>All the locations we know of</h1>
 
-        <%@locations.each do |location|%>
+<%@locations.each do |location|%>
+<ul>
+    <li><a href="/locations/<%=location.id%>><%=location.name%></a></li>
         <ul>
-            <li><%=location.name%></li>
-                <ul>
-                    <li><%=location.description%></li>
-                </ul>
-            <ul>
-                <li>Buildings located here:</li>
-                <ul>
-                    <%location.buildings.each do |building|%>
-                    <li><%=building.name%></li>
-                    <ul>
-                        <li><%=building.description%></li>
-                        <li><%=building.special_properties%></li>
-                    </ul>
-                    <%end%>
-                </ul>
-            </ul>
+            <li><%=location.description%></li>
         </ul>
-        <%end%></li>
+    <ul>
+        <li>Buildings located here:</li>
+        <ul>
+            <%location.buildings.each do |building|%>
+            <li><%=building.name%></li>
+            <ul>
+                <li><%=building.description%></li>
+                <li><%=building.special_properties%></li>
+            </ul>
+            <%end%>
+        </ul>
+    </ul>
+</ul>
+<%end%>
+<h3>Would you like to <a href="/characters/new">create a new character.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>

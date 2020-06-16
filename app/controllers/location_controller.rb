@@ -1,7 +1,7 @@
 class LocationController < ApplicationController
     get "/locations" do
         @user = User.find_by_id(session[:users_id])
-        @locations = Locations.all
+        @locations = Location.all
         erb :"locations/index"
     end
 

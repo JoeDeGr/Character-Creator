@@ -8,6 +8,7 @@ class CharacterController < ApplicationController
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @characters = Character.all
+            binding.pry
             erb :"/characters/index"
         else
             redirect "/login"

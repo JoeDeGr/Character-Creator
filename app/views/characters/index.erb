@@ -2,53 +2,13 @@
 
 <ul>
     <%@characters.each do |character|%>
-    <li><%=character.name%></li>
+    <li><a href="/characters/<%=character.id%>""><%=character.name%></a></li>
+    <%=character.archatypes%>
     <ul>
-        <li><%=character.name%> tells this tale of their origin...</li>
-            <ul>
-                <li><%=character.description%></li>
-            </ul>
-        <li><%=character.name%> hails from:</li>
-        <%character.locations.each do |location|%>
-        <ul>
-            <li><%=location.name%></li>
-                <ul>
-                    <li><%=location.description%></li>
-                </ul>
-            <ul>
-                <li>Buildings located here:</li>
-                <ul>
-                    <%location.buildings.each do |building|%>
-                    <li><%=building.name%></li>
-                    <ul>
-                        <li><%=building.description%></li>
-                        <li><%=building.special_properties%></li>
-                    </ul>
-                    <%end%>
-                </ul>
-            </ul>
-        </ul>
-        <%end%></li>
-        <li><%=character.name%> is of this type:</li>
-        <%character.archatypes.each do |archatype|%>
-        <ul>
-            <li><%=archatype.name%></li>
-                <ul>
-                    <li><%=archatype.description%></li>
-                </ul>
-            <ul>
-                <li>They have the following powers through this type:</li>
-                <ul>
-                    <%archatype.powers.each do |power|%>
-                    <li><%=power.name%></li>
-                    <ul>
-                        <li><%=power.effect%></li>
-                    </ul>
-                    <%end%>
-                </ul>
-            </ul>
-        </ul>
-        <%end%></li>
+        <p>Is a <%=character.archatypes%>, who hails from <%=character.locations%>.</p><br>
+        <p><%=character.name%> tells this tale of their origin...</p><br>
+        <p><%=character.description%></p><br>
     </ul>
-    <%end%>
-</ul>
+<%end%><br><br>
+<h3>Would you like to <a href="/characters/new">create a new character.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
