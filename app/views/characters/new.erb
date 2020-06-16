@@ -4,7 +4,7 @@
 <label>Please select a unique name:</label>
 <input type="text" name="character[name]" id="character[name]"><br><br>
 
-<label>Where do you call from?</label>
+<label>Where do you call from?</label><br>
     <%@locations.each do |location|%>
         <input type="checkbox" name="character[location_ids][]" id="<%=location.id%>" value="<%=location.id%>"><%=location.name%><br>
     <%end%>

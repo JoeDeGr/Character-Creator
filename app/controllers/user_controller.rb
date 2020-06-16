@@ -3,7 +3,6 @@ require 'pry'
 class UserController < ApplicationController
 
     get "/login" do
-
         if User.is_logged_in?(session)
             @user = User.find_by_id(session[:user_id])
             redirect "/users/#{@user.slug}"
