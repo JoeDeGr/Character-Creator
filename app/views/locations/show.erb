@@ -1,0 +1,26 @@
+<h1>Check out all this cool location!</h1>
+
+<h2>Welcome, <%=@user.name%>!<h2>
+
+<ul>
+    <li><%=location.name%></li>
+        <ul>
+            <li><%=location.description%></li>
+        </ul>
+    <ul>
+        <li>Buildings located here:</li>
+        <ul>
+            <%location.buildings.each do |building|%>
+            <li><%=building.name%></li>
+            <ul>
+                <li><%=building.description%></li>
+                <li><%=building.special_properties%></li>
+            </ul>
+            <%end%>
+        </ul>
+    </ul>
+</ul>
+<%end%>
+<h3>Would you like to <a href="/locations/new">create a new location.</a><br>
+<h3>Would you like to <a href="/locations/<%=@location.id%>/edit">edit this location or add a new building.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
