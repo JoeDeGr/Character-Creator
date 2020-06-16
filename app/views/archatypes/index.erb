@@ -1,0 +1,21 @@
+<h1>Our current Archatypes include:</h1>
+
+<%@archatypes.each do |archatype|%>
+<ul>
+    <li><%=archatype.name%></li>
+    <ul>
+        <li><%=archatype.description%></li>
+        <li>They have the following powers through this type:</li>
+        <ul>
+            <%archatype.powers.each do |power|%>
+            <li><%=power.name%></li>
+            <ul>
+                <li><%=power.effect%></li>
+            </ul>
+            <%end%>
+        </ul>
+    </ul>
+</ul>
+<%end%>
+<h3>Would you like to <a href="/archatypes/new">create a new Archatype.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
