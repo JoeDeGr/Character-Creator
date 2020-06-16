@@ -1,0 +1,25 @@
+<h1>Check out all this cool Character Archatype!</h1>
+
+<h2>Welcome, <%=@user.name%>!<h2>
+
+
+<h3><%=@archatype.name.capitalize%></h3>
+<p><%=@archatype.description%></p><br>
+    
+
+<h4>Powers associated with this Character type:</h4>
+<ul>
+    <%@archatype.powers.each do |power|%>
+        <li><%=power.name%></li>
+        <ul>
+            <li><%=power.effect%></li>
+        </ul>
+    <%end%>
+    </ul>
+</ul>
+
+
+
+<h3>Would you like to <a href="/archatypes/new">create a new archatype.</a><br>
+<h3>Would you like to <a href="/archatypes/<%=@archatype.id%>/edit">edit this archatype or add a new building.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
