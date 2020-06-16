@@ -15,16 +15,38 @@
                 <ul>
                     <li><%=location.description%></li>
                 </ul>
-            <li>This Locations Buildings</li>
+            <ul>
+                <li>Buildings located here:</li>
                 <ul>
                     <%location.buildings.each do |building|%>
                     <li><%=building.name%></li>
                     <ul>
-                        <li><p>Description: <%=building.description%></li>
+                        <li><%=building.description%></li>
                         <li><%=building.special_properties%></li>
                     </ul>
                     <%end%>
                 </ul>
+            </ul>
+        </ul>
+        <%end%></li>
+        <li><%=character.name%> is of this type:</li>
+        <%character.archatypes.each do |archatype|%>
+        <ul>
+            <li><%=archatype.name%></li>
+                <ul>
+                    <li><%=archatype.description%></li>
+                </ul>
+            <ul>
+                <li>They have the following powers through this type:</li>
+                <ul>
+                    <%archatype.powers.each do |power|%>
+                    <li><%=power.name%></li>
+                    <ul>
+                        <li><%=power.effect%></li>
+                    </ul>
+                    <%end%>
+                </ul>
+            </ul>
         </ul>
         <%end%></li>
     </ul>
