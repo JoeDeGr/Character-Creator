@@ -1,0 +1,2 @@
+class ArchatypeController < ApplicationController
+end
