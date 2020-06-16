@@ -20,10 +20,10 @@ class LocationController < ApplicationController
             redirect "/login"
         end 
     end
-    get "/locations:id" do
+    get "/locations/:id" do
         if User.is_logged_in?(session)
             @user = User.current_user(session)
-            @location = Location.find_by_id(params:[id])
+            @location = Location.find_by_id(params[:id])
             erb :"locations/show"
         else
             redirect "/login"
