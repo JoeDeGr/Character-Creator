@@ -4,6 +4,7 @@
 
 <h3>Tell us about this place:</h3><br>
 <form action="/locations" method="post">
+<input type="hidden" id="hidden" name="_method" value="patch">
     <label>What is the name of this location?</label><br>
     <input type="text" name="location[name]" id="location[name]" value="<%=@location.name%>"><br><br>
 

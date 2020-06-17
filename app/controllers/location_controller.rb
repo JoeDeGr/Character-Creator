@@ -57,7 +57,14 @@ class LocationController < ApplicationController
         else
             redirect "/login"
         end
+    end
 
+    patch "/locations/:id" do
+        @user = User.current_user(session)
+        @location = Location.update(params[:location])
+        @location.save
+
+        redirect "/characters/#{@character.id}"
     end
 
     delete "/locations/:id" do
