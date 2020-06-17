@@ -1,3 +1,36 @@
+<h1>Lets review this location.</h1>
+
+<h2>Welcome, <%=@user.name%>!<h2>
+
+<h3>Tell us about this place:</h3><br>
+<form action="/locations" method="post">
+    <label>What is the name of this location?</label><br>
+    <input type="text" name="location[name]" id="location[name]" value="<%=@location.name%>"><br><br>
+
+    <label>What is it like there?</label><br>
+    <input type="text" name="location[description]" id="location[description]" value="<%=@location.description%>"><br><br>
+
+    <label>What is the weather like?</label><br>
+    <input type="text" name="location[weather]" id="location[weather]" value="<%=@location.weather%>"><br><br>
+
+    <label>hmmm... very interesting. With weather like that, what are the houses like?</label><br>
+    <input type="text" name="location[housing]" id="location[housing]" value="<%=@location.housing%>"><br><br>
+
+<h4>PLaces of interest here:</h5>
+
+    <%@location.buildings.each do |building|%>
+       <p><a href="/buildings/<%=building.id%>"><%=building.name%><a><p>
+       <ul>
+        <li><%=building.description%></li>
+        </ul>
+    <%end%><br>
+    <input type="submit" value="Edit">
+</form>
+    
 <form action="/locations/<%=@location.id%>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Delete location">
+
+<h3>Would you like to <a href="/locations/new">create a new location.</a><br>
+<h3>Would you like to <a href="/buildings/<%=@location.id%>/edit">add a new building.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>

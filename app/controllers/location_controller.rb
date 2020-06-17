@@ -30,10 +30,10 @@ class LocationController < ApplicationController
         end
     end
 
-    get "/locations:id/edit" do
+    get "/locations/:id/edit" do
         if User.is_logged_in?(session)
             @user = User.current_user(session)
-            @location = Location.find_by_id(params:[id])
+            @location = Location.find_by_id(params[:id])
             erb :"locations/edit"
         else
             redirect "/login"
