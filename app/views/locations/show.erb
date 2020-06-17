@@ -5,11 +5,11 @@
 
 <h3><%=@location.name.capitalize%></h3>
 <p><%=@location.description%></p><br>
-<p><%=location.weather%></p>
-<p><%=location.housing%></p>
+<p>The weather is: <%=@location.weather%></p>
+<p>Looking around the buildings look like: <%=@location.housing%></p>
     
 
-<h4>Buildings located here:</h4>
+<h3>Buildings of interest located here:</h3>
 <ul>
     <%@location.buildings.each do |building|%>
         <li><%=building.name.capitalize%></li>
