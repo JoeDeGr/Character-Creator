@@ -6,6 +6,9 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 use Rack::MethodOverride
+
+use PowerController
+use BuildingController
 use ArchatypeController
 use UserController
 use LocationController
