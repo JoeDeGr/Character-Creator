@@ -23,6 +23,18 @@
             <input type="checkbox" name="character[building_ids][]" id="<%=building.id%>" value="<%=building.id%>" <%="checked" if @character.buildings.include?(building)%>><%=building.name%><br>
         <%end%>
     <%end%><br>
+
+<p>Have you found a new path you are now walking?</p>
+    <%@archatypes.each do |archatype|%>
+        <input type="checkbox" name="character[archatype_ids][]" id="<%=archatype.id%>" value="<%=archatype.id%>" <%="checked" if @character.archatypes.include?(archatype)%>><%=archatype.name%><br>
+    <%end%>
+
+<p>Or powers you would like to add?</p>
+    <%@archatypes.each do |archatype|%>
+        <%archatype.powers.each do |power|%>
+            <input type="checkbox" name="character[power_ids][]" id="<%=power.id%>" value="<%=power.id%>" <%="checked" if @character.powers.include?(power)%>><%=power.name%><br>
+        <%end%>
+    <%end%><br>
     
 <input type="submit" value="submit">
 </form><br><br>
