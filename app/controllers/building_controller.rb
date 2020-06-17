@@ -13,8 +13,7 @@ class BuildingController < ApplicationController
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @characters = @user.characters
-            @buildings = building.all
-            @archatypes = Archatype.all
+            @locationss = Locations.all
             erb :"/buildings/new"
         else
             redirect "/login"

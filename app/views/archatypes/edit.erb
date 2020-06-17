@@ -12,7 +12,7 @@
     <label>What is this type like? What do they do? What makes them unique?</label><br>
     <input type="text" name="archatype[description]" id="archatype[description]" value="<%=@archatype.description%>"><br><br>
 
-<h4>PLaces of interest here:</h5>
+<h4>Which powers are associated with this Archatype:</h5>
 
     <%@powers.each do |power|%>
        <input type="checkbox" name="archatype[power_ids][]" id="<%=power.id%>" value="<%=power.id%>" <%="checked" if @archatype.power_ids.include?(power.id)%>><%=power.name%><br>
