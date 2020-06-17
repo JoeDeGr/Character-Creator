@@ -2,47 +2,36 @@
 
 <h1>Please tell us about this new Place of Power.</h1>
 
-<h3>Tell us about this character type:</h3><br>
+<h3>Tell us about this Building.</h3><br>
 <form action="/buildings/<%=@building.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="patch">
 
     <label>What is it's name?</label><br>
-    <input type="text" name="building[name]" id="building[name]"><br><br>
+    <input type="text" name="building[name]" id="building[name]" value="<%=@building.name%>"><br><br>
 
     <label>What is it like? Look, fell, sight, smell... </label><br>
-    <input type="text" name="building[description]" id="building[description]"><br><br>
+    <input type="text" name="building[description]" id="building[description]" value="<%=@building.description%>"><br><br>
 
     <label>Is there a power drawn from it?</label><br>
-    <input type="text" name="building[special_properties]" id="building[special_properties]"><br><br>
+    <input type="text" name="building[special_properties]" id="building[special_properties]" value="<%=@building.special_properties%>"><br><br>
 
     <label>Where is this building located?</label>
      <%@locations.each do |location|%>
-        <input type="checkbox" name="building[location_id][]" id="<%=location.id%>" value="<%=location.id%>"><%=location.name%><br>
+        <input type="radio" name="building[location_id][]" id="<%=location.id%>" value="<%=location.id%>" <%="checked" if @building.location_id == location.id%>><%=location.name%><br>
     <%end%>
 
     <label>Which characters are associated with this building:</label>
 
     <%@characters.each do |character|%>
-       <input type="checkbox" name="building[character_ids][]" id="<%=character.id%>" value="<%=character.id%>" <%="checked" if @building.character_ids.include?(character.id)%>><%=character.name%><br>
+       <input type="checkbox" name="building[character_ids][]" id="<%=character.id%>" value="<%=character.id%>" <%="checked" if @building.characters.include?(character)%>><%=character.name%><br>
     <%end%><br>
 
-     <input type="submit" value="create">
+     <input type="submit" value="Edit">
     </form><br><br>
-    
-<form action="/archatypes/<%=@archatype.id%>" method="post">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="Delete Archatype">
 
-<h3>Would you like to <a href="/archatypes/new">create a new archatype.</a><br>
-<h3>Would you like to <a href="/buildings/<%=@archatype.id%>/edit">add a new building.</a><br>
+
+<h3>Would you like to <a href="/locations">review available locations.</a><br>
 <h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
-
-
-<form action="/archatypes/<%=@archatype.id%>" method="post">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="Delete Archatype">
-
-
 
 <form action="/buildings/<%=@building.id%>" method="post">
 <input type="hidden" name="_method" value="delete">

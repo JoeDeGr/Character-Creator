@@ -33,6 +33,8 @@ class BuildingController < ApplicationController
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @building = Building.find_by_id(params[:id])
+            @characters = @user.characters
+            @locations = Location.all
             erb :"buildings/edit"
         else
             redirect "/login"
@@ -58,6 +60,8 @@ class BuildingController < ApplicationController
         @user = User.current_user(session)
         @building = Building.find_by_id(params[:id])
         @building.update(params[:building])
+        @building.location = Location.find_by_id(params[:building][:location_id])
+        @building.save
         redirect "/buildings/#{@building.id}"
     end
 

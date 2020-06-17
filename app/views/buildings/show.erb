@@ -8,11 +8,13 @@
 <p>Located in <%=@building.location.name%></p>
 <p>with the special properties: <%=@building.special_properties%></p>
 <p>This building is associated with the following characters:<p>
-<ul>
+
     <%@building.characters.each do |character|%>
-    <li><a href="characters/<%=character.id%>"><%=character.name%></a><li>
+    <ul>
+        <li><a href="characters/<%=character.id%>"><%=character.name%></a></li>
+    </ul>
     <%end%>
-</ul>
+
 
     
 
