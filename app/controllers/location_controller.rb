@@ -63,8 +63,6 @@ class LocationController < ApplicationController
         @user = User.current_user(session)
         @location = Location.find_by_id(params[:id])
         @location.update(params[:location])
-        binding.pry
- 
         redirect "/locations/#{@location.id}"
     end
 

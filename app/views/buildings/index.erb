@@ -1,0 +1,14 @@
+<h2>Welcome, <%=@user.name%>!<h2>
+
+<h1>Our current Buildings include:</h1>
+
+<%@buildings.each do |building|%>
+<ul>
+    <li><a href="buildings/<%=building.id%>"><%=building.name%></a></li>
+    <ul>
+        <li><%=building.description%></li>
+    </ul>
+</ul>
+<%end%>
+<h3>Would you like to <a href="/buildings/new">create a new building.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
