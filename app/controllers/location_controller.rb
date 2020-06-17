@@ -39,4 +39,24 @@ class LocationController < ApplicationController
             redirect "/login"
         end
     end
+
+    post "/locations" do
+        if User.is_logged_in?(session)
+            @user = User.current_user(session)
+            @location = []
+            @building = []
+            if !!params[:location][:name]
+                @location = Location.create(params[:location])
+            end
+            if !!params[:building][:name]
+                @building = Building.create(params[:building])
+                @building.location_id = @location.id
+                @building.save
+            end
+            redirect "/locations"
+        else
+            redirect "/login"
+        end
+
+    end
 end

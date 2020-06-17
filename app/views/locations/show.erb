@@ -12,7 +12,7 @@
 <h4>Buildings located here:</h4>
 <ul>
     <%@location.buildings.each do |building|%>
-        <li><%=building.name%></li>
+        <li><%=building.name.capitalize%></li>
         <ul>
             <li><%=building.description%></li>
             <li><%=building.special_properties%></li>
