@@ -1,0 +1,28 @@
+<h1>Check out all this cool location!</h1>
+
+<h2>Welcome, <%=@user.name%>!<h2>
+
+<h3>Tell us about this new place:</h3><br>
+    <label>What is the name of this location?</label><br>
+    <input type="text" name="location[name]" id="location[name]"><br><br>
+
+    <label>What is it like there?</label><br>
+    <input type="text" name="location[description]" id="location[description]"><br><br>
+
+    <label>What is the weather like?</label><br>
+    <input type="text" name="location[weather]" id="location[weather]"><br><br>
+
+    <label>hmmm... very interesting. With weather like that, what are the houses like?</label><br>
+    <input type="text" name="location[housing]" id="location[housing]"><br><br>
+
+<h3>What is your home like?</h3><br>
+    <label>What is your homes name?</label><br>
+    <input type="text" name="building[name]" id="building[name]"><br><br>
+
+    <label>What is it like?</label><br>
+    <input type="text" name="building[description]" id="building[description]"><br><br>
+
+    <label>Do you draw from its power?</label><br>
+    <input type="text" name="building[special_properties]" id="building[special_properties]"><br><br>
+
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>

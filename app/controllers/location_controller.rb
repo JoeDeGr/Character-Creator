@@ -15,7 +15,7 @@ class LocationController < ApplicationController
             @characters = @user.characters
             @locations = Location.all
             @archatypes = Archatype.all
-            erb :"/characters/new"
+            erb :"/locations/new"
         else
             redirect "/login"
         end 
