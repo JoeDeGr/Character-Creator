@@ -3,7 +3,7 @@
 <h2>Welcome, <%=@user.name%>!<h2>
 
 <h3>Tell us about this place:</h3><br>
-<form action="/locations" method="post">
+<form action="/locations/<%=@location.id%>" method="post">
 <input type="hidden" id="hidden" name="_method" value="patch">
     <label>What is the name of this location?</label><br>
     <input type="text" name="location[name]" id="location[name]" value="<%=@location.name%>"><br><br>
@@ -26,7 +26,7 @@
         </ul>
     <%end%><br>
     <input type="submit" value="Edit">
-</form>
+</form><br><br>
     
 <form action="/locations/<%=@location.id%>" method="post">
 <input type="hidden" name="_method" value="delete">

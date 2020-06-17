@@ -1,0 +1,14 @@
+=> [[32m#<Location:0x00007fffc02c20f0[0m
+  id: [1;34m1[0m,
+  name: [31m[1;31m"[0m[31mThe Dark Container[1;31m"[0m[31m[0m,
+  description: [31m[1;31m"[0m[31mIt is dark and cold. It is a very dangerous place.[1;31m"[0m[31m[0m,
+  weather: [31m[1;31m"[0m[31mIt is cold and foggy. It rains allot.[1;31m"[0m[31m[0m,
+  housing:
+   [31m[1;31m"[0m[31mThey are mostly built into the ground and made of sod. The roofs are grass covered and some have plants and trees groqing out of the top. There aren't many windows. [1;31m"[0m[31m[0m[32m>[0m,
+ [32m#<Location:0x00007fffc02c1e98[0m
+  id: [1;34m2[0m,
+  name: [31m[1;31m"[0m[31mThe Dark Container[1;31m"[0m[31m[0m,
+  description: [31m[1;31m"[0m[31mIt is dark and cold. It is a very dangerous place.[1;31m"[0m[31m[0m,
+  weather: [31m[1;31m"[0m[31mIt is cold and foggy. It rains allot.[1;31m"[0m[31m[0m,
+  housing:
+   [31m[1;31m"[0m[31mThey are mostly built into the ground and made of sod. The roofs are grass covered and some have plants and trees groqing out of the top. There aren't many windows. [1;31m"[0m[31m[0m[32m>[0m]
