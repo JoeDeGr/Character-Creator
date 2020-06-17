@@ -59,4 +59,9 @@ class LocationController < ApplicationController
         end
 
     end
+
+    delete "/locations/:id" do
+        Location.destroy(params[:id])
+        redirect "/locations"
+    end
 end

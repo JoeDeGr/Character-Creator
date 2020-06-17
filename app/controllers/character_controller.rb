@@ -8,7 +8,6 @@ class CharacterController < ApplicationController
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @characters = Character.all
-            binding.pry
             erb :"/characters/index"
         else
             redirect "/login"
@@ -30,7 +29,6 @@ class CharacterController < ApplicationController
     get "/characters/:id/edit" do
     
         if User.is_logged_in?(session)
-
             @user = User.find_by_id(session[:user_id])
             @character = Character.find_by_id(params[:id])
             @user_page = User.find_by_id(@character.user_id)
@@ -53,8 +51,6 @@ class CharacterController < ApplicationController
         end 
     end
 
-    
-
     post "/characters" do
 
         @user = User.current_user(session)
@@ -72,5 +68,10 @@ class CharacterController < ApplicationController
         @character.save
 
         redirect "/characters/#{@character.id}"
+    end
+
+    delete "/characters/:id" do
+        Character.destroy(params[:id])
+        redirect "/characters"
     end
 end

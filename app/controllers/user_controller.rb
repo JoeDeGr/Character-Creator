@@ -89,5 +89,10 @@ class UserController < ApplicationController
             session[:user_id] = @user.id
             redirect "/users/#{@user.slug}"
         end
-    end  
+    end 
+    
+    delete "/users/:id" do
+        User.destroy(params[:id])
+        redirect "users"
+    end
 end

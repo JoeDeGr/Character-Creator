@@ -11,10 +11,17 @@
     <input type="text" name="character[level]" value="<%=@character.level%>">
     
 <input type="submit" value="submit">
-</form>
+</form><br><br>
+
+<p>Or you could always...</p><br><br>
+
+<form action="/characters/<%=@character.id%>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete Character">
 
 <h3>Would you like to tell me about a new <a href="/locations/new">location</a> or <a href="/buildings/new">building?</a>
 <h3>Have you begun down the path of a new <a href="/archetypes/new">archetype</a> or <a href="/powers/new">power?</a>
 
 <h3>Would you like to <a href="/characters/new">create a new character.</a><br>
 <h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
+

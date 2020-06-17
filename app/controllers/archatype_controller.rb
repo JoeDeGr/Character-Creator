@@ -17,4 +17,9 @@ class ArchatypeController < ApplicationController
             redirect "/login"
         end
     end
+
+    delete "/Archatypes/:id" do
+        archatype.destroy(params[:id])
+        redirect "archatypes"
+    end
 end
