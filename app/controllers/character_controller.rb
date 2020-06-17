@@ -75,9 +75,8 @@ class CharacterController < ApplicationController
     patch "/characters/:id" do
 
         @user = User.current_user(session)
-        @character = Character.update(params[:character])
-        @character.save
-
+        @character = Character.find_by_id(params[:id])
+        @character.update(params[:character])
         redirect "/characters/#{@character.id}"
     end
 
