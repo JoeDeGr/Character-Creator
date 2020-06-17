@@ -44,8 +44,9 @@ class BuildingController < ApplicationController
             @user = User.current_user(session)
             @building = []
             if !!params[:building][:name]
-                binding.pry
                 @building = Building.create(params[:building])
+                @building.location = Location.find_by_id(params[:building][:location_id])
+                @building.save
             end
             redirect "/buildings/#{@building.id}"
         else

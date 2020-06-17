@@ -1,26 +1,23 @@
-<h1>Check out this cool location!</h1>
+<h1>Check out this cool Building!</h1>
 
 <h2>Welcome, <%=@user.name%>!<h2>
 
 
-<h3><%=@location.name.capitalize%></h3>
-<p><%=@location.description%></p><br>
-<p>The weather is: <%=@location.weather%></p>
-<p>Looking around the buildings look like: <%=@location.housing%></p>
+<h3><%=@building.name.capitalize%></h3>
+<p><%=@building.description%></p><br>
+<p>Located in <%=@building.location.name%></p>
+<p>with the special properties: <%=@building.special_properties%></p>
+<p>This building is associated with the following characters:<p>
+<ul>
+    <%@building.characters.each do |character|%>
+    <li><a href="characters/<%=character.id%>"><%=character.name%></a><li>
+    <%end%>
+</ul>
+
     
 
-<h3>Buildings of interest located here:</h3>
-<ul>
-    <%@location.buildings.each do |building|%>
-        <li><%=building.name.capitalize%></li>
-        <ul>
-            <li><%=building.description%></li>
-            <li><%=building.special_properties%></li>
-        </ul>
-    <%end%>
-    </ul>
-</ul><br>
-
-<h3>Would you like to <a href="/locations/new">create a new location.</a><br>
-<h3>Would you like to <a href="/locations/<%=@location.id%>/edit">edit this location or add a new building.</a><br>
+<h3>Would you like to <a href="/buildings/new">create a new building.</a><br>
+<h3>Would you like to <a href="/buildings/<%=@building.id%>/edit">edit this building.</a><br>
+<h3>Would you like to <a href="/buildings">review available buildings.</a><br>
+<h3>Would you like to <a href="/locations">review available locations.</a><br>
 <h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
