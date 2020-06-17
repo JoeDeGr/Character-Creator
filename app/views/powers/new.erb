@@ -1,0 +1,23 @@
+<h2>Welcome, <%=@user.name%>!<h2>
+
+<h1>Create a new Power:</h1>
+
+<h3>What type pf power would you like to add?</h3><br>
+<form action="/powers" method="post">
+    <label>What is the powers name?</label><br>
+    <input type="text" name="power[name]" id="power[name]"><br><br>
+
+    <label>What does it do? how does it help the character? </label><br>
+    <input type="text" name="power[effect]" id="power[effect]"><br><br>
+
+    <label>What Character Archatypes can use this Power?</label>
+        <%@archatypes.each do |archatype|%>
+            <input type="checkbox" name="power[archatype_ids][]" id="<%=archatype.id%>" value="<%=archatype.id%>"><%=archatype.name%>
+        <%end%><br>
+    
+     <input type="submit" value="Create">
+</form>
+
+<h3>Would you like to <a href="/powers">review available powers.</a><br>
+<h3>Would you like to <a href="/archatypes">review available archatypes.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.id%>">return to your homepage.</a><br>

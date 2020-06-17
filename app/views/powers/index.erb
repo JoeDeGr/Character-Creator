@@ -1,0 +1,11 @@
+<h2>Welcome, <%=@user.name%>!<h2>
+
+<h1>Our current powers include:</h1>
+
+<%@powers.each do |power|%>
+<ul>
+    <li><a href="powers/<%=power.id%>"><%=power.name%></a></li>
+</ul>
+<%end%>
+<h3>Would you like to <a href="/powers/new">create a new power.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>

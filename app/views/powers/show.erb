@@ -1,0 +1,28 @@
+<h2>Welcome, <%=@user.name%>!<h2>
+
+<h1>Check out this sweet Power!:</h1>
+
+<h3><%=@power.name%></h3>
+    <ul>
+        <li>Effect:</li>
+            <ul>
+                <li><%=@power.effect%></li>
+            </ul>
+        <li>Archatypes that can access this power: </li>
+            <ul>
+                <%@power.archatypes.each do |archatype|%>
+                    <li><a href="/archatypes/<%=archatype.id%>"><%=archatype.name%></a></li>
+                <%end%>
+            </ul>
+        <li>Characters who can use this Power:</li>
+            <ul>
+                <%@power.characters.each do |character|%>
+                    <li><a href="/characters/<%=character.id%>"><%=character.name%></a></li>
+                <%end%>
+            </ul>
+        
+    </ul>
+
+<h3>Would you like to <a href="/powers/<%=@power.id%>/edit">Edit this power.</a><br>
+<h3>Would you like to <a href="/powers/new">create a new power.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
