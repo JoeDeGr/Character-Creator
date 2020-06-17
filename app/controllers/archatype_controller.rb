@@ -32,7 +32,8 @@ class ArchatypeController < ApplicationController
     get "/archatypes/:id/edit" do
         if User.is_logged_in?(session)
             @user = User.current_user(session)
-            @archatype = archatype.find_by_id(params[:id])
+            @archatype = Archatype.find_by_id(params[:id])
+            @powers = Power.all
             erb :"archatypes/edit"
         else
             redirect "/login"
@@ -62,13 +63,12 @@ class ArchatypeController < ApplicationController
         @user = User.current_user(session)
         @archatype = Archatype.find_by_id(params[:id])
         @archatype.update(params[:archatype])
-        binding.pry
  
-        redirect "/locations/#{@location.id}"
+        redirect "/archatypes/#{@archatype.id}"
     end
 
-    delete "/Archatypes/:id" do
-        archatype.destroy(params[:id])
-        redirect "archatypes"
+    delete "/archatypes/:id" do
+        Archatype.destroy(params[:id])
+        redirect "/archatypes"
     end
 end

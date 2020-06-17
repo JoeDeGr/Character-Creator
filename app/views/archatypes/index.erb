@@ -2,7 +2,7 @@
 
 <%@archatypes.each do |archatype|%>
 <ul>
-    <li><%=archatype.name%></li>
+    <li><a href="archatypes/<%=archatype.id%>"><%=archatype.name%></a></li>
     <ul>
         <li><%=archatype.description%></li>
         <li>They have the following powers through this type:</li>

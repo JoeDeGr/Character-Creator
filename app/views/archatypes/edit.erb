@@ -1,3 +1,35 @@
+<h2>Welcome, <%=@user.name%>!<h2>
+
+<h1>Lets review this Archatype.</h1>
+
+<h3>Tell us about this character type:</h3><br>
+<form action="/archatypes/<%=@archatype.id%>" method="post">
+<input id="hidden" type="hidden" name="_method" value="patch">
+
+    <label>What is the name of this archatype?</label><br>
+    <input type="text" name="archatype[name]" id="archatype[name]" value="<%=@archatype.name%>"><br><br>
+
+    <label>What is this type like? What do they do? What makes them unique?</label><br>
+    <input type="text" name="archatype[description]" id="archatype[description]" value="<%=@archatype.description%>"><br><br>
+
+<h4>PLaces of interest here:</h5>
+
+    <%@powers.each do |power|%>
+       <input type="checkbox" name="archatype[power_ids][]" id="<%=power.id%>" value="<%=power.id%>" <%="checked" if @archatype.power_ids.include?(power.id)%>><%=power.name%><br>
+    <%end%><br>
+
+     <input type="submit" value="Edit">
+    </form><br><br>
+    
+<form action="/archatypes/<%=@archatype.id%>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete Archatype">
+
+<h3>Would you like to <a href="/archatypes/new">create a new archatype.</a><br>
+<h3>Would you like to <a href="/buildings/<%=@archatype.id%>/edit">add a new building.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
+
+
 <form action="/archatypes/<%=@archatype.id%>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Delete Archatype">
