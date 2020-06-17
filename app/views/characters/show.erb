@@ -16,29 +16,37 @@
             <ul>
                 <%@character.locations.each do |l|%>
                     <li><%=l.name%></li>
-                    <li><%=l.description%></li>
+                    <ul>
+                        <li><%=l.description%></li>
+                    </ul>
                 <%end%>
             </ul>
             <h4>Buildings:</h4>
             <ul>
                 <%@character.buildings.each do |l|%>
                     <li><%=l.name%></li>
-                    <li><%=l.description%></li>
-                    <li><%=l.special_properties%></li>
+                    <ul>
+                        <li><%=l.description%></li>
+                        <li><%=l.special_properties%></li>
+                    </ul>
                 <%end%>
             </ul>
             <h4>Archatypes:</h4>
             <ul>
                 <%@character.archatypes.each do |l|%>
                     <li><%=l.name%></li>
-                    <li><%=l.description%></li>
+                    <ul>
+                        <li><%=l.description%></li>
+                    </ul>
                 <%end%>
             </ul>
             <h4>Powers:</h4>
             <ul>
                 <%@character.powers.each do |l|%>
                     <li><%=l.name%></li>
-                    <li><%=l.effect%></li>
+                    <ul>
+                        <li><%=l.effect%></li>
+                    </ul>
                 <%end%>
             </ul>
         </ul>
