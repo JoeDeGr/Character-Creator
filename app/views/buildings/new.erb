@@ -1,0 +1,33 @@
+<h2>Welcome, <%=@user.name%>!<h2>
+
+<h1>Create a new place of power.</h1>
+
+<h3>Please tell us about this new Place of Power.:</h3><br>
+<form action="/buildings" method="post">
+
+    <label>What is it's name?</label><br>
+    <input type="text" name="building[name]" id="building[name]"><br><br>
+
+    <label>What is it like? Look, fell, sight, smell... </label><br>
+    <input type="text" name="building[description]" id="building[description]"><br><br>
+
+    <label>Is there a power drawn from it?</label><br>
+    <input type="text" name="building[special_properties]" id="building[special_properties]"><br><br>
+
+    <label>Where is this building located?</label>
+     <%@locations.each do |location|%>
+        <input type="checkbox" name="building[location_id][]" id="<%=location.id%>" value="<%=location.id%>"><%=location.name%><br>
+    <%end%>
+
+    <label>Which characters are associated with this building:</label>
+
+    <%@characters.each do |character|%>
+       <input type="checkbox" name="building[character_ids][]" id="<%=character.id%>" value="<%=character.id%>"><%=character.name%><br>
+    <%end%><br>
+
+     <input type="submit" value="create">
+    </form><br><br>
+
+
+<h3>Would you like to <a href="/locations">review available locations.</a><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
