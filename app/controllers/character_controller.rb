@@ -31,6 +31,7 @@ class CharacterController < ApplicationController
         if User.is_logged_in?(session)
             @user = User.find_by_id(session[:user_id])
             @character = Character.find_by_id(params[:id])
+            @locations = Location.all
             @user_page = User.find_by_id(@character.user_id)
             if @user.id == @user_page.id
                 erb :"/characters/edit"
@@ -65,6 +66,15 @@ class CharacterController < ApplicationController
         @character.archatypes << archatype
         @character.locations << location
         @character.user_id = @user.id
+        @character.save
+
+        redirect "/characters/#{@character.id}"
+    end
+
+    patch "/characters/:id" do
+
+        @user = User.current_user(session)
+        @character = Character.update(params[:character])
         @character.save
 
         redirect "/characters/#{@character.id}"

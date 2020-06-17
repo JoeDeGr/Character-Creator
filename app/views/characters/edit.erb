@@ -1,23 +1,37 @@
-<h1> I hear footsteps... who approaches?</h1>
+<h1>What would you like to change?</h1>
 
 <form action="/characters/<%=@character.id%>" method="post">
 <input type="hidden" id="hidden" name="_method" value="patch">
+
 <label>What would you like to be called?</label>
 <input type="text" name="character[name]" id="character[name]" value="<%=@character.name%>"><br><br>
 
 <p> Would you like to Tell me your story again?.</p>
     <input type="text" name="character[description]" value="<%=@character.description%>">
+
 <p>Or have you leveled up?</p>
     <input type="text" name="character[level]" value="<%=@character.level%>">
+
+<p>Have you found a new land you would like to hail from?</p>
+    <%@locations.each do |location|%>
+        <input type="checkbox" name="character[location_ids][]" id="<%=location.id%>" value="<%=location.id%>" <%="checked" if @character.locations.include?(location)%>><%=location.name%><br>
+    <%end%>
+
+<p>Do you have a home there?</p>
+    <%@locations.each do |location|%>
+        <%location.buildings.each do |building|%>
+            <input type="checkbox" name="character[building_ids][]" id="<%=building.id%>" value="<%=building.id%>" <%="checked" if @character.buildings.include?(building)%>><%=building.name%><br>
+        <%end%>
+    <%end%><br>
     
 <input type="submit" value="submit">
 </form><br><br>
 
-<p>Or you could always...</p><br><br>
+<p>Or you could always...</p><br>
 
 <form action="/characters/<%=@character.id%>" method="post">
 <input type="hidden" name="_method" value="delete">
-<input type="submit" value="Delete Character">
+<input type="submit" value="Delete this Character">
 
 <h3>Would you like to tell me about a new <a href="/locations/new">location</a> or <a href="/buildings/new">building?</a>
 <h3>Have you begun down the path of a new <a href="/archetypes/new">archetype</a> or <a href="/powers/new">power?</a>
