@@ -17,7 +17,7 @@
     <label>hmmm... very interesting. With weather like that, what are the houses like?</label><br>
     <input type="text" name="location[housing]" id="location[housing]" value="<%=@location.housing%>"><br><br>
 
-<h4>PLaces of interest here:</h5>
+<h4>Places of interest here:</h5>
 
     <%@location.buildings.each do |building|%>
        <p><a href="/buildings/<%=building.id%>"><%=building.name%><a><p>

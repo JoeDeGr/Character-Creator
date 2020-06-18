@@ -74,7 +74,6 @@ class CharacterController < ApplicationController
     end
 
     patch "/characters/:id" do
-        binding.pry
         @user = User.current_user(session)
         @character = Character.find_by_id(params[:id])
         @character.update(params[:character])
