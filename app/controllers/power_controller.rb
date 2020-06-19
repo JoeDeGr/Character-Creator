@@ -45,7 +45,6 @@ class PowerController < ApplicationController
             @user = User.current_user(session)
             @power = []
             if !!params[:power][:name]
-                binding.pry
                 @power = Power.create(params[:power])
                 redirect "/powers"
             end

@@ -26,7 +26,6 @@ class CharacterController < ApplicationController
     end
 
     get "/characters/:id/edit" do
-    
         if User.is_logged_in?(session)
             @user = User.find_by_id(session[:user_id])
             @character = Character.find_by_id(params[:id])
@@ -35,6 +34,8 @@ class CharacterController < ApplicationController
             @user_page = User.find_by_id(@character.user_id)
             if @user.id == @user_page.id
                 erb :"/characters/edit"
+            else
+                redirect "/users/#{@user.id}"
             end
         else
             session.clear
@@ -54,6 +55,7 @@ class CharacterController < ApplicationController
 
     post "/characters" do
         if User.is_logged_in?(session)
+            binding.pry
             user = User.current_user(session)
             @character = Character.create(params[:character])
             location = Location.create(params[:location])
@@ -74,10 +76,20 @@ class CharacterController < ApplicationController
     end
 
     patch "/characters/:id" do
-        @user = User.current_user(session)
-        @character = Character.find_by_id(params[:id])
-        @character.update(params[:character])
-        redirect "/characters/#{@character.id}"
+        binding.pry
+        if User.is_logged_in?(session)
+            @user = User.current_user(session)
+            @character = Character.find_by_id(params[:id])
+            @user_characater = User.find_by_id(@character.user_id)
+            if @user.id == @user_character.id
+                @character.update(params[:character])
+                redirect "/characters/#{@character.id}"
+            else
+                redirect "/users/#{@user.id}"
+            end
+        else
+            redirect "/login"
+        end
     end
 
     delete "/characters/:id" do
