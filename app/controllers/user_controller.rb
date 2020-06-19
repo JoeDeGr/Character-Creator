@@ -14,14 +14,13 @@ class UserController < ApplicationController
     get "/signup" do
         if User.is_logged_in?(session)
             @user = User.find_by_id(session[:user_id]) 
-            redirect "/user/#{@user.id}"
+            redirect "/users/#{@user.id}"
         else
             erb :"/users/signup"
         end
     end
 
     get "/users/:id" do
-        
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @user_page = User.find_by_id(params[:id])
