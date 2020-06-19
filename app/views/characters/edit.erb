@@ -1,7 +1,7 @@
 <h1>What would you like to change?</h1>
 
 <form action="/characters/<%=@character.id%>" method="post">
-<input type="hidden" id="hidden" name="_method" value="patch">
+<input type="hidden" id="hidden" name="_method" value="PATCH">
 
 <label>What would you like to be called?</label>
 <input type="text" name="character[name]" id="character[name]" value="<%=@character.name%>"><br><br>

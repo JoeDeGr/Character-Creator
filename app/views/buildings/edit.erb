@@ -4,7 +4,7 @@
 
 <h3>Tell us about this Building.</h3><br>
 <form action="/buildings/<%=@building.id%>" method="post">
-<input id="hidden" type="hidden" name="_method" value="patch">
+<input id="hidden" type="hidden" name="_method" value="PATCH">
 
     <label>What is it's name?</label><br>
     <input type="text" name="building[name]" id="building[name]" value="<%=@building.name%>"><br><br>
@@ -23,7 +23,8 @@
     <label>Which characters are associated with this building:</label>
 
     <%@characters.each do |character|%>
-       <input type="checkbox" name="building[character_ids][]" id="<%=character.id%>" value="<%=character.id%>" <%="checked" if @building.characters.include?(character)%>><%=character.name%><br>
+        <label><%=character.name%></label>
+       <input type="checkbox" name="building[character_ids][]" id="<%=character.id%>" value="<%=character.id%>" <%="checked" if @building.characters.include?(character)%>><br>
     <%end%><br>
 
      <input type="submit" value="Edit">

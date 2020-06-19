@@ -91,7 +91,15 @@ class UserController < ApplicationController
     end 
     
     delete "/users/:id" do
-        User.destroy(params[:id])
-        redirect "/users"
+        @user = User.find_by_id(session[:user_id])
+        @user_page = User.find_by_id(params[:id])
+        if @user.id == @user_page.id
+            session.clear
+            User.destroy(params[:id])
+            redirect "/"
+        else
+            session.clear
+            redirect "/login"
+        end
     end
 end

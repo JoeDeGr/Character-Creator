@@ -8,7 +8,8 @@
                 <li><a href="/characters/<%=character.id%>"><%=character.name%></a></li><br><br>
             <%end%>
         </ul>
-        
+
+<p>Would you like to <a href="/users/<%=@user.id%>/edit">edit this user?</a></p>     
 <h3>You can also create a new <a href="/characters/new">create a new character.</a></h3>
 <h3>Or, <a href="/characters">view all the characters</a> that have been created.</h3>
 <h3>Or, <a href="/locations">view all the locations</a> that have been created.</h3>

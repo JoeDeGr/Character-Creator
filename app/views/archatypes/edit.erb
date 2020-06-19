@@ -4,7 +4,7 @@
 
 <h3>Tell us about this character type:</h3><br>
 <form action="/archatypes/<%=@archatype.id%>" method="post">
-<input id="hidden" type="hidden" name="_method" value="patch">
+<input id="hidden" type="hidden" name="_method" value="PATCH">
 
     <label>What is the name of this archatype?</label><br>
     <input type="text" name="archatype[name]" id="archatype[name]" value="<%=@archatype.name%>"><br><br>

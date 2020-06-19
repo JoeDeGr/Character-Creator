@@ -5,8 +5,8 @@
 
 <h3><%=@building.name.capitalize%></h3>
 <p><%=@building.description%></p><br>
-<p>Located in <%=@building.location.name%></p>
-<p>with the special properties: <%=@building.special_properties%></p>
+<p>Located in <%=@location%></p>
+<p>With the special properties: <%=@building.special_properties%></p>
 <p>This building is associated with the following characters:</p>
 
     <%@building.characters.each do |character|%>

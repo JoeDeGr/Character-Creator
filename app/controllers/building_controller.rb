@@ -23,6 +23,11 @@ class BuildingController < ApplicationController
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @building = Building.find_by_id(params[:id])
+            @location = "... er... well... um... to be honest... we do not know where this building is. All we know is that it does exist... er... somewhere."
+            if !@building.location  == ""
+                @location = @building.location.name
+            end
+
             erb :"buildings/show"
         else
             redirect "/login"

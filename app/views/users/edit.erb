@@ -1,18 +1,19 @@
 <h1> Edit Your Info</h1>
 
-<form action="/users/<%=@user.slug%>" method="post">
-<input id="hidden" type="_hidden" name="_method" value="patch">
+<form action="/users/<%=@user.id%>" method="post">
+<input id="hidden" type="hidden" name="_method" value="PATCH">
 <label>Please select a unique username:</label>
-<input type="text" name="name" id="name"><br><br>
+<input type="text" name="name" id="name" value="<%=@user.name%>"><br><br>
 <label>Please enter your e-mail address::</label>
-<input type="text" name="email" id="email"><br><br>
+<input type="text" name="email" id="email" value="<%=@user.email%>"><br><br>
 <label>Please enter your Password:</label>
 <input type="text" name="password" id="password"><br><br>
 <input type="submit" value="submit">
 </form>
 
-<form action="/users/<%=@user.slug%>" method="post">
+<p>Would you like to <a href="/users/<%=@user.id%>">return to your homepage.</a></p>
+
+<form action="/users/<%=@user.id%>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Delete User">
 
-<p>Would you like to <a href="/users/<%=@user.id%>">return to your homepage.</a></p>
