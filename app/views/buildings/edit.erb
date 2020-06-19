@@ -30,8 +30,9 @@
     </form><br><br>
 
 
-<h3>Would you like to <a href="/locations">review available locations.</a><br>
-<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
+<h3>Would you like to <a href="/locations">review available locations?</a></h3><br>
+<h3>Or, <a href="/buildings">view all the buildings</a> that have been created?</h3><br>
+<h3>Or maybe <a href="/users/<%=@user.slug%>">return to your homepage?</a></h3><br>
 
 <form action="/buildings/<%=@building.id%>" method="post">
 <input type="hidden" name="_method" value="delete">

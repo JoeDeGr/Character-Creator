@@ -32,6 +32,8 @@
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Delete location">
 
-<h3>Would you like to <a href="/locations/new">create a new location.</a><br>
-<h3>Would you like to <a href="/buildings/<%=@location.id%>/edit">add a new building.</a><br>
-<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
+<h3>Would you like to <a href="/locations/new">create a new location.</a></h3><br>
+<h3>Or, <a href="/locations">view all the locations</a> that have been created.</h3><br>
+<h3>Or, <a href="/buildings">view all the buildings</a> that have been created.</h3><br>
+<h3>Would you like to <a href="/buildings/new">add a new building.</a></h3><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a></h3><br>

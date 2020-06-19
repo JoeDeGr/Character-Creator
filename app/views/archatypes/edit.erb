@@ -25,9 +25,10 @@
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Delete Archatype">
 
-<h3>Would you like to <a href="/archatypes/new">create a new archatype.</a><br>
-<h3>Would you like to <a href="/buildings/<%=@archatype.id%>/edit">add a new building.</a><br>
-<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br>
+<h3>Would you like to <a href="/archatypes/new">create a new archatype.</a></h3><br>
+<h3>Or, <a href="/archatypes">view all the archatypes</a> that have been created.</h3><br>
+<h3>Or, <a href="/powers">view all the powers</a> that have been created.</h3><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a></h3><br>
 
 
 <form action="/archatypes/<%=@archatype.id%>" method="post">

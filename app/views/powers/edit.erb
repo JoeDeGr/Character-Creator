@@ -20,8 +20,11 @@
      <input type="submit" value="Create">
 </form>
 
-<h3>Would you like to <a href="/powers/<%=@power.id%>/edit">Edit this power.</a><br>
-<h3>Would you like to <a href="/powers/new">create a new power.</a><br>
-<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a><br><form action="/powers/<%=@power.id%>" method="post">
+<h3>Would you like to <a href="/powers/new">create a new power.</a></h3><br>
+<h3>Or, <a href="/archatypes">view all the archatypes</a> that have been created.</h3><br>
+<h3>Or, <a href="/powers">view all the powers</a> that have been created.</h3><br>
+<h3>Would you like to <a href="/users/<%=@user.slug%>">return to your homepage.</a></h3><br>
+
+<form action="/powers/<%=@power.id%>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Delete Power">
