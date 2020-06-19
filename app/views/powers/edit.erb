@@ -1,4 +1,4 @@
-<h2>Welcome, <%=@user.name%>!<h2>
+<h2>Welcome, <%=@user.name%>!</h2>
 
 <h1>Review and edit this Power!:</h1>
 
@@ -14,7 +14,8 @@
 
     <label>What Character Archatypes can use this Power?</label>
         <%@archatypes.each do |archatype|%>
-            <input type="checkbox" name="power[archatype_ids][]" id="<%=archatype.id%>" value="<%=archatype.id%>" <%="checked" if @power.archatypes.include?(archatype)%>><%=archatype.name%>
+            <label><%=archatype.name%></label>
+            <input type="checkbox" name="power[archatype_ids][]" id="<%=archatype.id%>" value="<%=archatype.id%>" <%="checked" if @power.archatypes.include?(archatype)%>>
         <%end%><br>
     
      <input type="submit" value="Create">

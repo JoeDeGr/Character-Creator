@@ -1,19 +1,17 @@
 <h1>Check out all the cool stuff you have!</h1>
 
-<h2>Welcome, <%=@user.name%>!<h2>
+<h2>Welcome, <%=@user.name%>!</h2>
 
     <h3> Characters by, <%=@user_page.name%>!</h3>
         <ul>
             <%@characters.each do |character|%>
-            <li><a href="/characters/<%=character.id%>"><%=character.name%></a></li><br><br>
+                <li><a href="/characters/<%=character.id%>"><%=character.name%></a></li><br><br>
             <%end%>
         </ul>
         
-<h3>You can also create a new <a href="/characters/new">create a new character.</a><br>
-<h3>Or, <a href="/characters">view all the characters</a> that have been created.<br>
-<h3>Or, <a href="/locations">view all the locations</a> that have been created.<br>
-<h3>Or, <a href="/buildings">view all the buildings</a> that have been created.<br>
-<h3>Or, <a href="/archatypes">view all the archatypes</a> that have been created.<br>
-<h3>Or, <a href="/powers">view all the powers</a> that have been created.<br>
-
-
+<h3>You can also create a new <a href="/characters/new">create a new character.</a></h3><br>
+<h3>Or, <a href="/characters">view all the characters</a> that have been created.</h3><br>
+<h3>Or, <a href="/locations">view all the locations</a> that have been created.</h3><br>
+<h3>Or, <a href="/buildings">view all the buildings</a> that have been created.</h3><br>
+<h3>Or, <a href="/archatypes">view all the archatypes</a> that have been created.</h3><br>
+<h3>Or, <a href="/powers">view all the powers</a> that have been created.</h3><br>
