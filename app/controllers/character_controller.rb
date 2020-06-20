@@ -55,34 +55,38 @@ class CharacterController < ApplicationController
 
     post "/characters" do
         if User.is_logged_in?(session)
-            @characer = []
+            @character = []
             @location = []
             @archatype = []
             @power = []
             @location = []
             @building = []
             user = User.current_user(session)
-            if !params[:character][:names] == ""
+            binding.pry
+            if !(params[:character][:name] == "")
                 @character = Character.create(params[:character])
             
-                if !params[:location][:names] == ""
+                if !(params[:location][:name] == "")
                     @location = Location.create(params[:location])
-                    @character.locations << location
+                    @character.locations << @location
                  end
-                if !params[:building][:names] == ""
+                if !(params[:building][:name] == "")
                     @building = Building.create(params[:building])
-                    if !@location = []
-                        @location.buildings << building
+                    if !(@location == [])
+                        binding.pry
+                        @location.buildings << @building
+                        binding.pry
+                        @location.save
                     end
-                    @character.buildings << building
+                    @character.buildings << @building
                 end
-                if !params[:archatype][:names] == ""
+                if !(params[:archatype][:name] == "")
                     @archatype = Archatype.create(params[:archatype])
-                    @character.archatypes << archatype
+                    @character.archatypes << @archatype
                 end
-                if !params[:building][:names] == ""
+                if !(params[:building][:name] == "")
                     @power = Power.create(params[:power])
-                    if !@archatype = []
+                    if !(@archatype = [])
                         @archatype.powers << @power
                     end
                 end
@@ -102,7 +106,8 @@ class CharacterController < ApplicationController
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @character = Character.find_by_id(params[:id])
-            @user_characater = User.find_by_id(@character.user_id)
+            @user_character = User.find_by_id(@character.user_id)
+            binding.pry
             if @user.id == @user_character.id
                 @character.update(params[:character])
                 redirect "/characters/#{@character.id}"
