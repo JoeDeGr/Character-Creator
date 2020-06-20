@@ -55,21 +55,43 @@ class CharacterController < ApplicationController
 
     post "/characters" do
         if User.is_logged_in?(session)
-            binding.pry
+            @characer = []
+            @location = []
+            @archatype = []
+            @power = []
+            @location = []
+            @building = []
             user = User.current_user(session)
-            @character = Character.create(params[:character])
-            location = Location.create(params[:location])
-            building = Building.create(params[:building])
-            archatype = Archatype.create(params[:archatype])
-            power = Power.create(params[:power])
-            location.buildings << building
-            archatype.powers <<  power
-            @character.buildings << building
-            @character.archatypes << archatype
-            @character.locations << location
+            if !params[:character][:names] == ""
+                @character = Character.create(params[:character])
+            
+                if !params[:location][:names] == ""
+                    @location = Location.create(params[:location])
+                    @character.locations << location
+                 end
+                if !params[:building][:names] == ""
+                    @building = Building.create(params[:building])
+                    if !@location = []
+                        @location.buildings << building
+                    end
+                    @character.buildings << building
+                end
+                if !params[:archatype][:names] == ""
+                    @archatype = Archatype.create(params[:archatype])
+                    @character.archatypes << archatype
+                end
+                if !params[:building][:names] == ""
+                    @power = Power.create(params[:power])
+                    if !@archatype = []
+                        @archatype.powers << @power
+                    end
+                end
             @character.user_id = user.id
             @character.save
             redirect "/characters/#{@character.id}"
+            else
+                redirect "/characters/new"
+            end
         else
             redirect "/login"
         end

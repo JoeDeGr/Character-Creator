@@ -15,12 +15,12 @@
     <label>Is there a power drawn from it?</label><br>
     <input type="text" name="building[special_properties]" id="building[special_properties]" value="<%=@building.special_properties%>"><br><br>
 
-    <label>Where is this building located?</label>
+    <label>Where is this building located?</label><br>
      <%@locations.each do |location|%>
         <input type="radio" name="building[location_id][]" id="<%=location.id%>" value="<%=location.id%>" <%="checked" if @building.location_id == location.id%>><%=location.name%><br>
     <%end%>
 
-    <label>Which characters are associated with this building:</label>
+    <label>Which characters are associated with this building:</label><br>
 
     <%@characters.each do |character|%>
         <label><%=character.name%></label>
