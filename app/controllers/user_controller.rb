@@ -50,6 +50,15 @@ class UserController < ApplicationController
         redirect "/"
     end
 
+    get "/signup/email" do
+        erb :"/users/signup_email_fail"
+    end
+
+    get "/signup/username" do
+        @email = params[:email]
+        erb :"/users/signup_username_fail"
+    end
+
     post "/login" do
         @user = User.find_by(name: params[:name])
         if @user && @user.authenticate(params[:password])
@@ -66,12 +75,18 @@ class UserController < ApplicationController
             redirect "/signup"
         elsif params[:email] == ""
             redirect "/signup"
-        elsif (params[:password] == "") || (params[:email] == /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i)
-            binding.pry
+        elsif params[:password] == ""
             redirect "/signup"
+        elsif !(params[:email] == /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+            binding.pry
+            redirect "/signup/email"
+        elseif (User.include?(name: params[:name]))
+            redirect "/signup/username"
         else
+            binding.pry
             @user = User.create(params)
             session[:user_id] = @user.id
+            binding.pry
             redirect "/users/#{@user.id}"
         end
     end
