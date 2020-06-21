@@ -66,7 +66,8 @@ class UserController < ApplicationController
             redirect "/signup"
         elsif params[:email] == ""
             redirect "/signup"
-        elsif params[:password] == ""
+        elsif (params[:password] == "") || (params[:email] == /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i)
+            binding.pry
             redirect "/signup"
         else
             @user = User.create(params)
