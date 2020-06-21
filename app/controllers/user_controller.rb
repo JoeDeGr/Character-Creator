@@ -80,7 +80,7 @@ class UserController < ApplicationController
         elsif !(params[:email] == /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i)
             binding.pry
             redirect "/signup/email"
-        elseif (User.include?(name: params[:name]))
+        elseif (User.exists?(name: params[:name]))
             redirect "/signup/username"
         else
             binding.pry

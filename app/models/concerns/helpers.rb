@@ -15,5 +15,8 @@ module Helpers
         def slug
             self.name.downcase.gsub(" ", "-")
         end
+        def is_a_valid_email?
+            self =~ /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i
+        end
     end
 end
