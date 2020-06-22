@@ -80,10 +80,9 @@ class UserController < ApplicationController
         elsif (params[:email] =~ /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i) != 0
             binding.pry
             redirect "/signup/email"
-        elseif (User.exists?(name: params[:name]))
+        elsif (User.exists?(name: params[:name]))
             redirect "/signup/username"
         else
-            binding.pry
             @user = User.create(params)
             session[:user_id] = @user.id
             binding.pry
