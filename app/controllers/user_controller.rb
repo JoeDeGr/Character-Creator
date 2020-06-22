@@ -38,6 +38,9 @@ class UserController < ApplicationController
             if @user.id == @user_page.id
                 @characters = @user_page.characters
                 erb :"/users/edit"
+            else
+                session.clear
+                redirect "/users/login"
             end
         else
             session.clear
