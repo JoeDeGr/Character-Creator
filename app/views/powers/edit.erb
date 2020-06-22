@@ -3,7 +3,7 @@
 <h1>Review and edit this Power!:</h1>
 
 <h3><%=@power.name%></h3>
-<form action="/powers" method="post">
+<form action="/powers/<%=@power.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="PATCH">
 
     <label>What is the powers name?</label><br>
@@ -12,20 +12,20 @@
     <label>What does it do? how does it help the character? </label><br>
     <input type="text" name="power[effect]" id="power[effect]" value="<%=@power.effect%>"><br><br>
 
-    <label>What Character Archatypes can use this Power?</label>
+    <label>What Character Archatypes can use this Power?</label><br>
         <%@archatypes.each do |archatype|%>
-            <label><%=archatype.name%></label>
-            <input type="checkbox" name="power[archatype_ids][]" id="<%=archatype.id%>" value="<%=archatype.id%>" <%="checked" if @power.archatypes.include?(archatype)%>>
+            <input type="checkbox" name="power[archatype_ids][]" id="<%=archatype.id%>" value="<%=archatype.id%>" <%="checked" if @power.archatypes.include?(archatype)%>><%=archatype.name%><br>
         <%end%><br>
     
-     <input type="submit" value="Create">
-</form>
+     <input type="submit" value="Edit">
+</form><br>
+
+<form action="/powers/<%=@power.id%>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete Power">
 
 <p>Would you like to <a href="/powers/new">create a new power.</a></p>
 <p>Or, <a href="/archatypes">view all the archatypes</a> that have been created.</p>
 <p>Or, <a href="/powers">view all the powers</a> that have been created.</p>
 <p>Would you like to <a href="/users/<%=@user.id%>">return to your homepage.</a></p>
 
-<form action="/powers/<%=@power.id%>" method="post">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="Delete Power">

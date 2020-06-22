@@ -57,7 +57,6 @@ class PowerController < ApplicationController
         @user = User.current_user(session)
         @power = Power.find_by_id(params[:id])
         @power.update(params[:power])
- 
         redirect "/powers/#{@power.id}"
     end
 

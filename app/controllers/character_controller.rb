@@ -99,12 +99,12 @@ class CharacterController < ApplicationController
     end
 
     patch "/characters/:id" do
-        binding.pry
+ 
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @character = Character.find_by_id(params[:id])
             @user_character = User.find_by_id(@character.user_id)
-            binding.pry
+            
             if @user.id == @user_character.id
                 @character.update(params[:character])
                 redirect "/characters/#{@character.id}"
