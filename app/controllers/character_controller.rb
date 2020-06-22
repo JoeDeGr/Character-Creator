@@ -62,7 +62,6 @@ class CharacterController < ApplicationController
             @location = []
             @building = []
             user = User.current_user(session)
-            binding.pry
             if !(params[:character][:name] == "")
                 @character = Character.create(params[:character])
             
@@ -73,10 +72,9 @@ class CharacterController < ApplicationController
                 if !(params[:building][:name] == "")
                     @building = Building.create(params[:building])
                     if !(@location == [])
+                        @building.location = @location
                         binding.pry
-                        @location.buildings << @building
-                        binding.pry
-                        @location.save
+                        @building.save
                     end
                     @character.buildings << @building
                 end
