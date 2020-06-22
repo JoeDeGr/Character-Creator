@@ -4,19 +4,22 @@
 
 
 <h3><%=@building.name.capitalize%></h3>
-<p><%=@building.description%></p><br>
+<p><%=@building.description%></p>
 <p>Located in <%=@location%></p>
 <p>With the special properties: <%=@building.special_properties%></p>
 <p>This building is associated with the following characters:</p>
 
-    <%@building.characters.each do |character|%>
-    <ul>
-        <li><a href="characters/<%=character.id%>"><%=character.name%></a></li>
-    </ul>
+    <%if !(@building.characters == [])%>
+        <%@building.characters.each do |character|%>
+        <ul>
+            <li><a href="/characters/<%=character.id%>"><%=character.name%></a></li>
+        </ul>
+        <%end%><br>
+    <%else%>
+        <ul>
+            <em><p>We have not heard of any who dwell within.<p></em><br>
+        </ul>
     <%end%>
-
-
-    
 
 <p>Would you like to <a href="/buildings/new">create a new building?</a></p>
 <p>Would you like to <a href="/buildings/<%=@building.id%>/edit">edit this building?</a></p>
