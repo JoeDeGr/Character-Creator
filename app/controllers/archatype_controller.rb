@@ -12,7 +12,7 @@ class ArchatypeController < ApplicationController
     get "/archatypes/new" do
         if User.is_logged_in?(session)
             @user = User.current_user(session)
-            @archatypes = Archatype.all
+            @powers = Power.all
             erb :"/archatypes/new"
         else
             redirect "/login"

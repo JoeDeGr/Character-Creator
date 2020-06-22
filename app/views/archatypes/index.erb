@@ -5,15 +5,6 @@
     <li><a href="archatypes/<%=archatype.id%>"><%=archatype.name%></a></li>
     <ul>
         <li><%=archatype.description%></li>
-        <li>They have the following powers through this type:</li>
-        <ul>
-            <%archatype.powers.each do |power|%>
-            <li><%=power.name%></li>
-            <ul>
-                <li><%=power.effect%></li>
-            </ul>
-            <%end%>
-        </ul>
     </ul>
 </ul>
 <%end%><br>

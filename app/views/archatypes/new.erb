@@ -11,6 +11,11 @@
     <input type="text" name="archatype[description]" id="archatype[description]"><br><br>
 
 <h3>Would you like to add a power for this type?</h3><br>
+    <label>Select from existing powers:</label><br>
+        <%@powers.each do |power|%>
+            <input type="checkbox" name="archatype[power_ids][]" id="<%=power.id%>" value="<%=power.id%>"><%=power.name%><br>
+            <%end%>
+    <h4>Or create a new unique power now:</h4>
     <label>What is the powers name?</label><br>
     <input type="text" name="power[name]" id="power[name]"><br><br>
 
@@ -21,5 +26,5 @@
     </form>
 
 <p>Would you like to <a href="/users/<%=@user.id%>">return to your homepage.</a></p>
-<p>Or go back to the <a href="/archatype">Archatype index page</a>?</p>
+<p>Go back to the <a href="/archatype">Archatype index page</a>?</p>
 <p>Or, maybe <a href="/powers">view all the available Powers</a> that have been created?</p>
