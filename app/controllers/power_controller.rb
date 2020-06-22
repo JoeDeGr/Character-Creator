@@ -44,9 +44,11 @@ class PowerController < ApplicationController
         if User.is_logged_in?(session)
             @user = User.current_user(session)
             @power = []
-            if !!params[:power][:name]
+            if !(params[:power][:name] == "")
                 @power = Power.create(params[:power])
                 redirect "/powers"
+            else 
+                redirect "/powers/new"
             end
         else
             redirect "/login"
