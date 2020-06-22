@@ -73,7 +73,6 @@ class CharacterController < ApplicationController
                     @building = Building.create(params[:building])
                     if !(@location == [])
                         @building.location = @location
-                        binding.pry
                         @building.save
                     end
                     @character.buildings << @building
@@ -82,7 +81,7 @@ class CharacterController < ApplicationController
                     @archatype = Archatype.create(params[:archatype])
                     @character.archatypes << @archatype
                 end
-                if !(params[:building][:name] == "")
+                if !(params[:power][:name] == "")
                     @power = Power.create(params[:power])
                     if !(@archatype = [])
                         @archatype.powers << @power

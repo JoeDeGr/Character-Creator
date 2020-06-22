@@ -45,15 +45,20 @@ class LocationController < ApplicationController
             @user = User.current_user(session)
             @location = []
             @building = []
-            if !!params[:location][:name]
+            if !(params[:location][:name] == "")
+                binding.pry
                 @location = Location.create(params[:location])
+                if !(params[:building][:name] == "")
+                    binding.pry
+                    @building = Building.create(params[:building])
+                    @building.location_id = @location.id
+                    @building.save
+                end
+                redirect "/locations/#{@location.id}"
+            else
+                redirect "/locations/new"
+            
             end
-            if !!params[:building][:name]
-                @building = Building.create(params[:building])
-                @building.location_id = @location.id
-                @building.save
-            end
-            redirect "/locations"
         else
             redirect "/login"
         end
