@@ -1,5 +1,9 @@
 <h1> Please Signup for a Free Account</h1>
 
+<%if @fail_message%>
+  <p><%= @fail_message%></p>
+<% end %>
+
 <form action="/users" method="post">
 <label>Please select a unique username:</label>
 <input type="text" name="name" id="name"><br><br>

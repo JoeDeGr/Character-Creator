@@ -7,6 +7,8 @@ class UserController < ApplicationController
             @user = User.find_by_id(session[:user_id])
             redirect "/users/#{@user.id}"
         else
+            @fail_message = session[:fail_message]
+            session[:fail_message] = nil
             erb :"/users/login"
         end
     end
@@ -16,6 +18,8 @@ class UserController < ApplicationController
             @user = User.find_by_id(session[:user_id]) 
             redirect "/users/#{@user.id}"
         else
+            @fail_message = session[:fail_message]
+            session[:fail_message] = nil
             erb :"/users/signup"
         end
     end
@@ -25,6 +29,8 @@ class UserController < ApplicationController
             @user = User.current_user(session)
             @user_page = User.find_by_id(params[:id])
             @characters = @user_page.characters
+            @success_message = session[:success_message]
+            session[:success_message] = nil
             erb :"/users/show"
         else
             redirect "/login"
@@ -66,27 +72,36 @@ class UserController < ApplicationController
         @user = User.find_by(name: params[:name])
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
+            session[:success_message] = "You Logged In!"
             redirect "/users/#{@user.id}"
         else
+            session[:fail_message] = "Password or Username Incorrect! Please Try Again."
             redirect "/login"
         end
+
     end
 
     post "/users" do
         
         if params[:name] == ""
+            session[:fail_message] = "Username was left blank. You must have a Username."
             redirect "/signup"
         elsif params[:email] == ""
+            session[:fail_message] = "E-mail was left blank. You must have a E-mail."
             redirect "/signup"
         elsif params[:password] == ""
+            session[:fail_message] = "Password was left blank. You must have a Password."
             redirect "/signup"
         elsif (params[:email] =~ /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i) != 0
-            redirect "/signup/email"
+            session[:fail_message] = "We apologize for the inconvienance, but you must have a conforming E-mail."
+            redirect "/signup"
         elsif (User.exists?(name: params[:name]))
-            redirect "/signup/username"
+            session[:fail_message] = "You must have a unique Username."
+            redirect "/signup"
         else
             @user = User.create(params)
             session[:user_id] = @user.id
+            session[:success_message] = "Account Sucessfully Created!"
             redirect "/users/#{@user.id}"
         end
     end

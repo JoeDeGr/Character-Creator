@@ -1,7 +1,10 @@
-# Charicter-Creator
+# Character-Creator
+
 Repository for my Sinatra Project Fantasy Character Creator This repository will allow you to build and describe a charicter based on specific character classes and link them to powers and locations. 
 
-This is a Sinatra application that relies on ActiveRecord and uses bcrypt password protection, so please make sure all those items are installed. Clone the repo and bundle install and enjoy.
+This is a Sinatra application that relies on ActiveRecord and uses bcrypt password protection, so please make sure all those items are installed. This was built on Ruby 2.6.3, so please maksure your using that or later. 
+
+Clone the repo and bundle install and enjoy.
 
 MIT License
 
