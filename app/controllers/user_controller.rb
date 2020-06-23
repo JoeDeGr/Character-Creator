@@ -72,7 +72,7 @@ class UserController < ApplicationController
         end
     end
 
-    post "/signup" do
+    post "/users" do
         
         if params[:name] == ""
             redirect "/signup"
@@ -91,18 +91,24 @@ class UserController < ApplicationController
         end
     end
 
-    patch "/signup/:id" do
-        
-        if params[:name] == ""
-            redirect "/users/:id/edit"
-        elsif params[:email] == ""
-            redirect "/users/:id/edit"
-        elsif params[:password] == ""
-            redirect "/users/:id/edit"
-        else
-            @user = User.update(params)
-            session[:user_id] = @user.id
-            redirect "/users/#{@user.id}"
+    patch "/users/:id" do
+        if User.is_logged_in?(session)
+            @user = User.current_user(session)
+            if params[:name] == ""
+                
+                redirect "/users/:id/edit"
+            elsif params[:email] == ""
+                redirect "/users/:id/edit"
+            elsif params[:password] == ""
+                redirect "/users/:id/edit"
+            else
+                binding.pry
+                @user.name = params[:name]
+                @user.email = params[:email]
+                @user.password = params[:password]
+
+                redirect "/users/#{@user.id}"
+            end
         end
     end 
     
