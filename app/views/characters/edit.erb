@@ -18,10 +18,8 @@
     <%end%>
 
 <p>Do you have a home there?</p>
-    <%@locations.each do |location|%>
-        <%location.buildings.each do |building|%>
-            <input type="checkbox" name="character[building_ids][]" id="<%=building.id%>" value="<%=building.id%>" <%="checked" if @character.buildings.include?(building)%>><%=building.name%><br>
-        <%end%>
+    <%@buildings.each do |building|%>
+        <input type="checkbox" name="character[building_ids][]" id="<%=building.id%>" value="<%=building.id%>" <%="checked" if @character.buildings.include?(building)%>><%=building.name%><br>
     <%end%><br>
 
 <p>Have you found a new path you are now walking?</p>
