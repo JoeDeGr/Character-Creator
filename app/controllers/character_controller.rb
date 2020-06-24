@@ -31,7 +31,7 @@ class CharacterController < ApplicationController
             @user = User.find_by_id(session[:user_id])
             @character = Character.find_by_id(params[:id])
             @locations = Location.all
-            @buildings = Buildings.all
+            @buildings = Building.all
             @archatypes = Archatype.all
             @user_page = User.find_by_id(@character.user_id)
             if @user.id == @user_page.id
