@@ -50,11 +50,10 @@
     <input type="text" name="archatype[description]" id="archatype[description]"><br><br>
 
     <label>Does your type have any special powers?</label><br>
-        <%@archatypes.each do |archatype|%>
-            <%archatype.powers.each do |power|%>
+        <%@powers.each do |power|%>
             <input type="checkbox" name="archatype[power_ids][]" id="<%=power.id%>" value="<%=power.id%>"><%=power.name%><br>
-            <%end%>
-    <%end%>
+        <%end%>
+        
     <p>Interesting, anything else?</p>
     <label>Power Name:</label>
     <input type="text" name="power[name]" id="power[name]"><br>

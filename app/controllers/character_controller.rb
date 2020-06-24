@@ -31,6 +31,7 @@ class CharacterController < ApplicationController
             @character = Character.find_by_id(params[:id])
             @locations = Location.all
             @archatypes = Archatype.all
+            @powers = Power.all
             @user_page = User.find_by_id(@character.user_id)
             if @user.id == @user_page.id
                 erb :"/characters/edit"
