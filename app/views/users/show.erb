@@ -9,12 +9,19 @@
 
     <h3> Characters by, <%=@user_page.name%>!</h3>
         <ul>
-            <%@characters.each do |character|%>
-                <li><a href="/characters/<%=character.id%>"><%=character.name%></a></li><br><br>
+            <%if @characters == []%>
+                <em><p>Yo do not have any characters yet!</p></em>
+            <%else%>
+                <%@characters.each do |character|%>
+                    <li><a href="/characters/<%=character.id%>"><%=character.name%></a></li><br><br>
+                <%end%>
             <%end%>
         </ul>
-
-<p>Would you like to <a href="/users/<%=@user.id%>/edit">edit this user?</a></p>     
+<p>Would you like to delete this user?</a></p>
+<form action="/users/<%=@user.id%>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete User">  
+</form>
 <p>You can also create a new <a href="/characters/new">create a new character.</a></p>
 <p>Or, <a href="/characters">view all the characters</a> that have been created.</p>
 <p>Or, <a href="/locations">view all the locations</a> that have been created.</p>
