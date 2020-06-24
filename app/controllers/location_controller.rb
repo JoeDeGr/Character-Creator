@@ -46,10 +46,11 @@ class LocationController < ApplicationController
             @location = []
             @building = []
             if !(params[:location][:name] == "")
-                binding.pry
+
                 @location = Location.create(params[:location])
+                
                 if !(params[:building][:name] == "")
-                    binding.pry
+
                     @building = Building.create(params[:building])
                     @building.location_id = @location.id
                     @building.save
