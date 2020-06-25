@@ -1,16 +1,19 @@
 <h1> Edit Your Info</h1>
 
+<%if @fail_message%>
+  <p><%= @fail_message%></p><br>
+<% end %>
 <form action="/users/<%=@user.id%>" method="post">
 <input id="hidden" type="hidden" name="_method" value="PATCH">
 
 <label>Please select a unique username:</label>
-<input type="text" name="name" id="name" value="<%=@user.name%>"><br><br>
+<input type="text" name="user[name]" id="user[name]" value="<%=@user.name%>"><br><br>
 
 <label>Please enter your e-mail address:</label>
-<input type="text" name="email" id="email" value="<%=@user.email%>"><br><br>
+<input type="text" name="user[email]" id="user[email]" value="<%=@user.email%>"><br><br>
 
 <label>Please enter your Password:</label>
-<input type="text" name="password" id="password"><br><br>
+<input type="text" name="user[password]" id="user[password]"><br><br>
 
 <input type="submit" value="Edit">
 </form><br>

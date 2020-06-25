@@ -17,7 +17,8 @@
                 <%end%>
             <%end%>
         </ul>
-<p>Would you like to delete this user?</a></p>
+<p>Would you like to <a href="/users/<%=@user.id%>/edit">edit this user?</a></p>
+<p>Or...</p>
 <form action="/users/<%=@user.id%>" method="post">
 <input type="hidden" name="_method" value="delete">
 <input type="submit" value="Delete User">  

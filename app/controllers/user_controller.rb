@@ -42,7 +42,8 @@ class UserController < ApplicationController
             @user = User.find_by_id(session[:user_id])
             @user_page = User.find_by_id(params[:id])
             if @user.id == @user_page.id
-                @characters = @user_page.characters
+                @fail_message = session[:fail_message]
+                session[:fail_message] = nil
                 erb :"/users/edit"
             else
                 session.clear
@@ -57,15 +58,6 @@ class UserController < ApplicationController
     get "/logout" do
         session.clear
         redirect "/"
-    end
-
-    get "/signup/email" do
-        erb :"/users/signup_email_fail"
-    end
-
-    get "/signup/username" do
-        @email = params[:email]
-        erb :"/users/signup_username_fail"
     end
 
     post "/login" do
@@ -107,21 +99,21 @@ class UserController < ApplicationController
     end
 
     patch "/users/:id" do
+
         if User.is_logged_in?(session)
+
             @user = User.current_user(session)
-            if params[:name] == ""
-                
+            if params[:user][:name] == ""
+                session[:fail_message] = "You Must Have A Name."
                 redirect "/users/:id/edit"
-            elsif params[:email] == ""
+            elsif params[:user][:email] == ""
+                session[:fail_message] = "You Must Have An Email."
                 redirect "/users/:id/edit"
-            elsif params[:password] == ""
+            elsif params[:user][:password] == ""
+                session[:fail_message] = "You Must Have A Password."
                 redirect "/users/:id/edit"
             else
-                binding.pry
-                @user.name = params[:name]
-                @user.email = params[:email]
-                @user.password = params[:password]
-
+                @user.update(params[:user])
                 redirect "/users/#{@user.id}"
             end
         end
