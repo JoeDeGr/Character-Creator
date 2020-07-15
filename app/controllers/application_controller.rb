@@ -12,4 +12,8 @@ class ApplicationController<Sinatra::Base
     get '/' do
         erb :index
     end
+
+    def authorize_to_edit?(object)
+       User.current_user(session) == object.user  
+    end
 end

@@ -33,8 +33,8 @@ class CharacterController < ApplicationController
             @locations = Location.all
             @buildings = Building.all
             @archatypes = Archatype.all
-            @user_page = User.find_by_id(@character.user_id)
-            if @user.id == @user_page.id
+            # @user_page = User.find_by_id(@character.user_id)
+            if authorize_to_edit?(@character)
                 erb :"/characters/edit"
             else
                 redirect "/users/#{@user.id}"
